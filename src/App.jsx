@@ -313,206 +313,98 @@ function BrandIntro() {
 }
 
 /* ==============================
-   ALBUM COLLECTION
+   CONTINUOUS LOOKBOOK SCROLL
    ============================== */
-function AlbumCollection({ onOpenAlbum }) {
+function ContinuousLookbook() {
   return (
-    <section className="albums" id="albums">
-      <div className="container">
-        <div className="albums__header scroll-reveal">
-          <h2 className="albums__heading">Explore the Identity</h2>
-          <p className="albums__sub">Browse the visual system through a collection of brand albums.</p>
-        </div>
+    <div className="lookbook-scroll" id="albums">
+      {ALBUMS.map((album, i) => {
+        // Skip rendering if no valid pages with images exist in this album (e.g. only opener/closer)
+        const hasImages = album.pages.some(p => p.img);
+        if (!hasImages) return null;
 
-        <div className="albums__grid">
-          {ALBUMS.map((album, i) => (
-            <div
-              className={`album-card album-card--${album.aspect} ${i === 0 ? 'album-card--featured' : ''} scroll-reveal`}
-              key={album.id}
-              style={{ transitionDelay: `${Math.min(i * 0.08, 0.5)}s` }}
-              onClick={() => onOpenAlbum(album)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => e.key === 'Enter' && onOpenAlbum(album)}
-            >
-              <div className="album-card__image">
-                {album.coverImg ? (
-                  <img src={album.coverImg} alt={album.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                ) : (
-                  <div className="album-card__placeholder">
-                    <span className="album-card__big-num">{album.num}</span>
-                  </div>
-                )}
-                <div className="album-card__hover-overlay">
-                  <span className="album-card__view-label">Open Album →</span>
-                </div>
+        return (
+          <section className="lookbook-section" id={`section-${album.id}`} key={album.id}>
+            <div className="container">
+              <div className="lookbook-section__header scroll-reveal">
+                <span className="lookbook-section__num">{album.num}</span>
+                <h2 className="lookbook-section__title">{album.title}</h2>
+                <p className="lookbook-section__desc">{album.desc}</p>
               </div>
-              <div className="album-card__info">
-                <span className="album-card__num">{album.num}</span>
-                <h3 className="album-card__title">{album.title}</h3>
-                <p className="album-card__desc">{album.desc}</p>
-                <span className="album-card__count">{album.count} visuals</span>
+              <div className="lookbook-section__grid">
+                {album.pages.map((page, j) => {
+                  if (!page.img) return null;
+                  const aspectClass = page.type === 'hero' || page.type === 'opener' ? 'span-full' : (page.type === 'spread' ? 'span-wide' : 'span-half');
+                  return (
+                    <div className={`lookbook-image-wrapper ${aspectClass} scroll-reveal`} key={j}>
+                      <img src={page.img} alt={page.caption || album.title} className="lookbook-img" />
+                      {page.caption && <p className="lookbook-caption">{page.caption}</p>}
+                    </div>
+                  )
+                })}
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+          </section>
+        );
+      })}
+    </div>
   )
 }
 
+
+
 /* ==============================
-   ALBUM VIEWER (Full-screen)
+   SIDE NAVIGATION
    ============================== */
-function AlbumViewer({ album, onClose }) {
-  const [current, setCurrent] = useState(0)
-  const viewerRef = useRef(null)
-  const total = album.pages.length
-  const page = album.pages[current]
+function SideNav({ albums }) {
+  const [activeId, setActiveId] = useState(null)
 
-  const goNext = useCallback(() => setCurrent(c => Math.min(c + 1, total - 1)), [total])
-  const goPrev = useCallback(() => setCurrent(c => Math.max(c - 1, 0)), [])
-
-  // Keyboard navigation
   useEffect(() => {
-    const handler = (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goNext()
-      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goPrev()
-      else if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', handler)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', handler)
-      document.body.style.overflow = ''
-    }
-  }, [goNext, goPrev, onClose])
-
-  // Touch swipe
-  const touchStart = useRef(null)
-  const onTouchStart = (e) => { touchStart.current = e.touches[0].clientX }
-  const onTouchEnd = (e) => {
-    if (!touchStart.current) return
-    const diff = touchStart.current - e.changedTouches[0].clientX
-    if (Math.abs(diff) > 60) { diff > 0 ? goNext() : goPrev() }
-    touchStart.current = null
-  }
-
-  const renderPage = () => {
-    if (page.type === 'opener') {
-      return (
-        <div className="viewer__page viewer__page--opener" style={album.coverImg ? { backgroundImage: `linear-gradient(to right, rgba(12, 18, 32, 0.95) 30%, rgba(12, 18, 32, 0.4)), url(${album.coverImg})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}>
-          <span className="viewer__page-big-num">{album.num}</span>
-          <div className="viewer__opener-text">
-            <span className="viewer__opener-label">Album {album.num}</span>
-            <h2 className="viewer__opener-title">{page.title}</h2>
-            <p className="viewer__opener-desc">{album.desc}</p>
-          </div>
-        </div>
-      )
-    }
-    if (page.type === 'closer') {
-      return (
-        <div className="viewer__page viewer__page--closer">
-          <div className="viewer__closer-content">
-            <img src={logoImg} alt="" className="viewer__closer-logo" />
-            <p className="viewer__closer-text">End of {album.title}</p>
-            <div className="viewer__closer-actions">
-              <button className="viewer__btn" onClick={onClose}>Return to Albums</button>
-              {current < total - 1 && (
-                <button className="viewer__btn viewer__btn--ghost" onClick={goNext}>
-                  View Next Collection →
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      )
-    }
-    // hero, detail, spread
-    return (
-      <div className={`viewer__page viewer__page--${page.type}`}>
-        <div className="viewer__image-area">
-          {page.img ? (
-             <img src={page.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-          ) : (
-            <div className="viewer__img-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <span>Upload Image</span>
-            </div>
-          )}
-        </div>
-        {page.type === 'spread' && (
-          <div className="viewer__side-area">
-            <div className="viewer__img-placeholder viewer__img-placeholder--small">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            </div>
-            <p className="viewer__side-caption">{page.caption}</p>
-          </div>
-        )}
-        {page.type !== 'spread' && (
-          <div className="viewer__caption-bar">
-            <span>{page.caption}</span>
-          </div>
-        )}
-      </div>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id)
+          }
+        })
+      },
+      { rootMargin: '-40% 0px -40% 0px' }
     )
+    
+    albums.forEach(album => {
+      const el = document.getElementById(`section-${album.id}`)
+      if (el) observer.observe(el)
+    })
+
+    return () => observer.disconnect()
+  }, [albums])
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(`section-${id}`)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
   }
+
+  // Filter albums that actually have images
+  const validAlbums = albums.filter(a => a.pages.some(p => p.img))
+
+  // Default to the first section if we are at the top (hero section) and nothing is intersecting yet
+  const displayActiveId = activeId || (validAlbums.length > 0 ? `section-${validAlbums[0].id}` : null)
 
   return (
-    <div className="viewer" ref={viewerRef} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-      {/* Header */}
-      <div className="viewer__header">
-        <div className="viewer__header-left">
-          <span className="viewer__header-num">{album.num}</span>
-          <span className="viewer__header-sep">/</span>
-          <span>{album.title}</span>
-        </div>
-        <div className="viewer__header-center">
-          <img src={logoImg} alt="" className="viewer__header-logo" />
-        </div>
-        <div className="viewer__header-right">
-          <button className="viewer__icon-btn" onClick={onClose} aria-label="Close">✕</button>
-        </div>
-      </div>
-
-      {/* Main */}
-      <div className="viewer__main" key={current}>
-        {renderPage()}
-      </div>
-
-      {/* Navigation */}
-      {current > 0 && (
-        <button className="viewer__arrow viewer__arrow--prev" onClick={goPrev} aria-label="Previous">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+    <nav className="side-nav">
+      {validAlbums.map((album) => (
+        <button
+          key={album.id}
+          className={`side-nav__item ${displayActiveId === `section-${album.id}` ? 'side-nav__item--active' : ''}`}
+          onClick={() => scrollToSection(album.id)}
+          aria-label={`Scroll to ${album.title}`}
+        >
+          <span className="side-nav__label">{album.num} {album.title}</span>
         </button>
-      )}
-      {current < total - 1 && (
-        <button className="viewer__arrow viewer__arrow--next" onClick={goNext} aria-label="Next">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
-      )}
-
-      {/* Footer */}
-      <div className="viewer__footer">
-        <div className="viewer__progress">
-          <span className="viewer__page-count">{String(current + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}</span>
-          <div className="viewer__progress-bar">
-            <div className="viewer__progress-fill" style={{ width: `${((current + 1) / total) * 100}%` }} />
-          </div>
-        </div>
-        <div className="viewer__filmstrip">
-          {album.pages.map((_, i) => (
-            <button
-              className={`viewer__thumb ${i === current ? 'viewer__thumb--active' : ''}`}
-              key={i}
-              onClick={() => setCurrent(i)}
-              aria-label={`Page ${i + 1}`}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+      ))}
+    </nav>
   )
 }
 
@@ -525,6 +417,7 @@ function ClosingCover() {
       <div className="closing__bg">
         <div className="closing__pattern" />
         <div className="closing__overlay" />
+        <div className="closing__accent-shape" />
       </div>
       <div className="closing__content scroll-reveal">
         <h2 className="closing__title">
@@ -552,7 +445,6 @@ function ClosingCover() {
 export default function App() {
   const [ready, setReady] = useState(false)
   const [introDone, setIntroDone] = useState(false)
-  const [activeAlbum, setActiveAlbum] = useState(null)
 
   const handleIntroDone = useCallback(() => {
     setIntroDone(true)
@@ -581,13 +473,11 @@ export default function App() {
           <main>
             <HeroCover />
             <BrandIntro />
-            <AlbumCollection onOpenAlbum={setActiveAlbum} />
+            <ContinuousLookbook />
+            <SideNav albums={ALBUMS} />
             <ClosingCover />
           </main>
         </div>
-      )}
-      {activeAlbum && (
-        <AlbumViewer album={activeAlbum} onClose={() => setActiveAlbum(null)} />
       )}
     </>
   )
