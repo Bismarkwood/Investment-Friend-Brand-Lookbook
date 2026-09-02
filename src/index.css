@@ -1,0 +1,97 @@
+/* ========================================
+   INVESTMENT FRIEND — BRAND LOOKBOOK 2026
+   Design System & Global Tokens
+   ======================================== */
+
+:root {
+  /* Brand Colours */
+  --navy: #0c1220;
+  --navy-light: #131b2e;
+  --charcoal: #1a2236;
+  --cream: #f5f0e6;
+  --cream-dark: #ebe4d4;
+  --white: #ffffff;
+  --soft-grey: #8892a4;
+  --gold-primary: #d4a732;
+  --gold-light: #e8bf4a;
+  --gold-dark: #a87822;
+  --gold-muted: rgba(212, 167, 50, 0.15);
+  --accent-lime: #c8e64a;
+
+  /* Semantic */
+  --bg-dark: var(--navy);
+  --bg-light: var(--cream);
+  --text-on-dark: #f0ece4;
+  --text-on-dark-secondary: rgba(240, 236, 228, 0.55);
+  --text-on-dark-muted: rgba(240, 236, 228, 0.3);
+  --text-on-light: #1a2236;
+  --text-on-light-secondary: rgba(26, 34, 54, 0.6);
+  --border-dark: rgba(255, 255, 255, 0.07);
+  --border-light: rgba(26, 34, 54, 0.1);
+
+  /* Typography */
+  --font-display: 'Nexa Bold', 'Nexa', -apple-system, sans-serif;
+  --font-body: 'Nexa Light', 'Nexa', -apple-system, sans-serif;
+
+  /* Layout */
+  --container-max: 1440px;
+  --container-padding: clamp(24px, 5vw, 64px);
+  --section-gap: clamp(100px, 12vw, 160px);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-fast: 0.3s;
+  --duration-medium: 0.5s;
+  --duration-slow: 0.7s;
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+/* Reset */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+ul, ol { list-style: none; }
+button { cursor: pointer; font-family: var(--font-body); }
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+}
+
+.gold-text {
+  color: var(--gold-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--navy); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-primary); }
+
+::selection {
+  background: rgba(212, 167, 50, 0.25);
+  color: var(--text-on-dark);
+}
