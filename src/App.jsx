@@ -16,6 +16,40 @@ import ctImg1 from './assets/Colour Type/Screenshot 2026-09-02 114927.png'
 import ctImg2 from './assets/Colour Type/Screenshot 2026-09-02 115022.png'
 import ctImg3 from './assets/Colour Type/Screenshot 2026-09-02 115049.png'
 import patternImg from './assets/Patterns & Graphics/01 copy 4.jpg'
+import stationaryImg from './assets/Stationary/01 copy 6.jpg'
+import statImg2 from './assets/Stationary/320001 Free Three Softcover Book Mockup From Top View.jpg'
+import statImg3 from './assets/Stationary/Business Card Mockup.png'
+import statImg4 from './assets/Stationary/Keychain_Mockup_5.jpg'
+import statImg5 from './assets/Stationary/Leather_Keychain.jpg'
+import statImg6 from './assets/Stationary/Leather_Keychain_Mockup.jpg'
+import statImg7 from './assets/Stationary/Leather_Keychain_Mockup_2.jpg'
+import statImg8 from './assets/Stationary/Pennant Flag - White.jpg'
+import statImg9 from './assets/Stationary/Pennant Flag.jpg'
+import statImg10 from './assets/Stationary/Standing Pen v1.jpg'
+import statImg11 from './assets/Stationary/Standing Pen v2.png'
+import digitalImg1 from './assets/Digital Presence/App Icon - Black.jpg'
+import digitalImg2 from './assets/Digital Presence/App Icon - Gradient Gold.jpg'
+import digitalImg3 from './assets/Digital Presence/Artboard 1 copy.jpg'
+import digitalImg4 from './assets/Digital Presence/Artboard 3 copy 2.jpg'
+import digitalImg5 from './assets/Digital Presence/Artboard 4.jpg'
+import digitalImg6 from './assets/Digital Presence/Instagram 1.jpg'
+import digitalImg7 from './assets/Digital Presence/Linkedin Profile.jpg'
+import lifestyleImg1 from './assets/Lifestyle Collection/01 copy 8.jpg'
+import lifestyleImg2 from './assets/Lifestyle Collection/01 Free Oversized Sweatshirt Mockup.png'
+import lifestyleImg3 from './assets/Lifestyle Collection/Artboard 1.jpg'
+import lifestyleImg4 from './assets/Lifestyle Collection/Artboard 1.png'
+import lifestyleImg5 from './assets/Lifestyle Collection/Artboard 2.jpg'
+import lifestyleImg6 from './assets/Lifestyle Collection/Baseball Cap.jpg'
+import lifestyleImg7 from './assets/Lifestyle Collection/Black Hoodie Mockup Back Side.jpg'
+import lifestyleImg8 from './assets/Lifestyle Collection/SENDLINESMS PRICING GUIDE.docx.jpg'
+import lifestyleImg9 from "./assets/Lifestyle Collection/Women's_Sleeveless_Golf.png"
+import lifestyleImg10 from "./assets/Lifestyle Collection/Women's_Sleeveless_Golf_Polo_Shirt_Mockup_01.jpg"
+import lifestyleImg11 from './assets/Lifestyle Collection/Zip Hoodie.jpg'
+import lifestyleImg12 from './assets/Lifestyle Collection/Zipper Hoodie.jpg'
+import carImg1 from './assets/Car Album/Hatchback_Car_Mockup_1.jpg'
+import carImg2 from './assets/Car Album/Car Branding.jpg'
+import carImg3 from './assets/Car Album/Hatchback_Car_Mockup_2.jpg'
+import carImg4 from './assets/Car Album/Hatchback_Car_Mockup_3.jpg'
 
 /* ==============================
    ALBUM DATA
@@ -71,64 +105,72 @@ const ALBUMS = [
     ]
   },
   {
-    id: 5, num: '05', title: 'Stationery',
+    id: 5, num: '05', title: 'Stationery & Print',
     desc: 'Business cards, letterheads, folders and pens',
-    count: 8, aspect: 'portrait',
+    count: 11, aspect: 'portrait', coverImg: stationaryImg,
     pages: [
       { type: 'opener', title: 'Stationery' },
-      { type: 'hero', caption: 'Business Card — Front' },
-      { type: 'detail', caption: 'Business Card — Back' },
-      { type: 'spread', caption: 'Letterhead Design' },
-      { type: 'detail', caption: 'Envelope System' },
-      { type: 'hero', caption: 'Presentation Folder' },
-      { type: 'spread', caption: 'Branded Pen Set' },
+      { type: 'hero', caption: 'Stationery Overview', img: stationaryImg },
+      { type: 'spread', caption: 'Business Cards', img: statImg3 },
+      { type: 'detail', caption: 'Softcover Book', img: statImg2 },
+      { type: 'hero', caption: 'Standing Pen', img: statImg10 },
+      { type: 'detail', caption: 'Standing Pen Alternate', img: statImg11 },
+      { type: 'spread', caption: 'Leather Keychain', img: statImg5 },
+      { type: 'hero', caption: 'Keychain Mockup 1', img: statImg6 },
+      { type: 'detail', caption: 'Keychain Mockup 2', img: statImg7 },
+      { type: 'spread', caption: 'Keychain Mockup 3', img: statImg4 },
+      { type: 'detail', caption: 'Pennant Flag White', img: statImg8 },
+      { type: 'hero', caption: 'Pennant Flag', img: statImg9 },
       { type: 'closer' },
     ]
   },
   {
     id: 6, num: '06', title: 'Lifestyle Collection',
     desc: 'Hoodies, cups, bottles and keychains',
-    count: 10, aspect: 'square',
+    count: 12, aspect: 'square', coverImg: lifestyleImg1,
     pages: [
       { type: 'opener', title: 'Lifestyle Collection' },
-      { type: 'hero', caption: 'Branded Hoodie' },
-      { type: 'detail', caption: 'Coffee Cup' },
-      { type: 'spread', caption: 'Water Bottle' },
-      { type: 'detail', caption: 'Tote Bag' },
-      { type: 'hero', caption: 'Keychain Set' },
-      { type: 'spread', caption: 'Notebook & Pen' },
-      { type: 'detail', caption: 'Cap & Beanie' },
-      { type: 'hero', caption: 'Full Merch Collection' },
+      { type: 'hero', caption: 'Lifestyle Overview', img: lifestyleImg1 },
+      { type: 'spread', caption: 'Oversized Sweatshirt', img: lifestyleImg2 },
+      { type: 'detail', caption: 'Hoodie Back', img: lifestyleImg7 },
+      { type: 'hero', caption: 'Zip Hoodie', img: lifestyleImg11 },
+      { type: 'detail', caption: 'Zipper Hoodie Alt', img: lifestyleImg12 },
+      { type: 'spread', caption: 'Golf Polo 1', img: lifestyleImg9 },
+      { type: 'hero', caption: 'Golf Polo 2', img: lifestyleImg10 },
+      { type: 'spread', caption: 'Baseball Cap', img: lifestyleImg6 },
+      { type: 'hero', caption: 'Artboard 1', img: lifestyleImg3 },
+      { type: 'detail', caption: 'Artboard 1 Alt', img: lifestyleImg4 },
+      { type: 'spread', caption: 'Artboard 2', img: lifestyleImg5 },
+      { type: 'detail', caption: 'Pricing Guide', img: lifestyleImg8 },
       { type: 'closer' },
     ]
   },
   {
-    id: 7, num: '07', title: 'On the Move',
+    id: 7, num: '07', title: 'Car Branding',
     desc: 'Vehicle branding and outdoor applications',
-    count: 7, aspect: 'landscape',
+    count: 4, aspect: 'landscape', coverImg: carImg1,
     pages: [
-      { type: 'opener', title: 'On the Move' },
-      { type: 'hero', caption: 'Vehicle Wrap — Side' },
-      { type: 'detail', caption: 'Vehicle Wrap — Rear' },
-      { type: 'spread', caption: 'Fleet Overview' },
-      { type: 'hero', caption: 'Outdoor Signage' },
-      { type: 'detail', caption: 'Window Graphics' },
+      { type: 'opener', title: 'Car Branding' },
+      { type: 'hero', caption: 'Hatchback Front', img: carImg1 },
+      { type: 'spread', caption: 'Hatchback Side', img: carImg3 },
+      { type: 'detail', caption: 'Hatchback Rear', img: carImg4 },
+      { type: 'hero', caption: 'Full Vehicle Wrap', img: carImg2 },
       { type: 'closer' },
     ]
   },
   {
     id: 8, num: '08', title: 'Digital Presence',
     desc: 'Social media, website and presentation templates',
-    count: 9, aspect: 'landscape',
+    count: 7, aspect: 'landscape', coverImg: digitalImg1,
     pages: [
       { type: 'opener', title: 'Digital Presence' },
-      { type: 'hero', caption: 'Website Homepage' },
-      { type: 'detail', caption: 'Mobile App' },
-      { type: 'spread', caption: 'Social Media Kit' },
-      { type: 'detail', caption: 'Instagram Grid' },
-      { type: 'hero', caption: 'LinkedIn Banner' },
-      { type: 'spread', caption: 'Presentation Template' },
-      { type: 'detail', caption: 'Email Signature' },
+      { type: 'hero', caption: 'App Icon - Black', img: digitalImg1 },
+      { type: 'detail', caption: 'App Icon - Gold', img: digitalImg2 },
+      { type: 'spread', caption: 'Website & App UI 1', img: digitalImg3 },
+      { type: 'hero', caption: 'Website & App UI 2', img: digitalImg4 },
+      { type: 'detail', caption: 'Website & App UI 3', img: digitalImg5 },
+      { type: 'spread', caption: 'Instagram Social Grid', img: digitalImg6 },
+      { type: 'hero', caption: 'LinkedIn Profile Banner', img: digitalImg7 },
       { type: 'closer' },
     ]
   },
@@ -392,7 +434,7 @@ function AlbumViewer({ album, onClose }) {
       <div className={`viewer__page viewer__page--${page.type}`}>
         <div className="viewer__image-area">
           {page.img ? (
-             <img src={page.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+             <img src={page.img} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
           ) : (
             <div className="viewer__img-placeholder">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" opacity="0.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
