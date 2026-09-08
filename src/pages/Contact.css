@@ -1,0 +1,12 @@
+/* Contact.css */
+
+/* White backdrop behind the rounded hero card (body is dark by default) */
+.page-contact {
+  background-color: var(--white);
+}
+
+/* The hero photo is portrait in a wide frame, so nudge the crop upward
+   to keep faces in view instead of cropping through them. */
+.page-contact .hero__bg-img {
+  object-position: center 28%;
+}

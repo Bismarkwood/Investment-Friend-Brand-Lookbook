@@ -1,0 +1,114 @@
+/* OurTeam.css */
+
+.team-section {
+  padding-top: clamp(80px, 10vw, 120px);
+  padding-bottom: clamp(100px, 12vw, 160px);
+  background-color: #e5e5e5; /* Light grey background matching reference */
+  color: var(--navy);
+  overflow: hidden; /* Prevent horizontal scroll from slider */
+}
+
+/* Animations */
+.team-section .anim-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.team-section .anim-delay-1 {
+  transition-delay: 0.2s;
+}
+
+.team-section.is-visible .anim-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Grid Container */
+.team__grid-container {
+  width: 100%;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+/* Hover effect on grid to blur non-hovered items */
+.team-grid:hover .team-card:not(:hover) {
+  filter: blur(4px) grayscale(40%);
+  opacity: 0.6;
+}
+
+/* Team Card */
+.team-card {
+  display: flex;
+  flex-direction: column;
+  transition: filter 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  transform: scale(1.02);
+}
+
+.team-card__image-wrapper {
+  width: 100%;
+  aspect-ratio: 3 / 2; /* Much shorter landscape aspect ratio */
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.team-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%; /* Keep faces visible in shorter frame */
+}
+
+.team-card__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-card__name {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0;
+}
+
+.team-card__socials {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.team-card__social-link {
+  color: var(--navy);
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.team-card__social-link:hover {
+  color: var(--gold-primary);
+  opacity: 1;
+}
+
+/* -----------------------------
+   RESPONSIVENESS
+-------------------------------- */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

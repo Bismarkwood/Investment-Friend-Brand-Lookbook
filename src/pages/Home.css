@@ -1,0 +1,11 @@
+/* ========================================
+   HOME PAGE STYLES
+   ======================================== */
+
+.home-page {
+  min-height: 100vh;
+  background-color: var(--white);
+  color: var(--text-on-light);
+  display: flex;
+  flex-direction: column;
+}

@@ -21,6 +21,8 @@
   /* Semantic */
   --bg-dark: var(--navy);
   --bg-light: var(--cream);
+  --bg-light-grey: #f5f5f2;
+  --forest-green: #112e24;
   --text-on-dark: #f0ece4;
   --text-on-dark-secondary: rgba(240, 236, 228, 0.55);
   --text-on-dark-muted: rgba(240, 236, 228, 0.3);
@@ -30,8 +32,8 @@
   --border-light: rgba(26, 34, 54, 0.1);
 
   /* Typography */
-  --font-display: 'Nexa Bold', 'Nexa', -apple-system, sans-serif;
-  --font-body: 'Nexa Light', 'Nexa', -apple-system, sans-serif;
+  --font-display: 'Manrope', -apple-system, sans-serif;
+  --font-body: 'Manrope', -apple-system, sans-serif;
 
   /* Layout */
   --container-max: 1440px;
@@ -94,4 +96,77 @@ button { cursor: pointer; font-family: var(--font-body); }
 ::selection {
   background: rgba(212, 167, 50, 0.25);
   color: var(--text-on-dark);
+}
+
+/* ========================================
+   GLOBAL SECTION HEADERS (Pill Style)
+   ======================================== */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto clamp(40px, 6vw, 64px) auto;
+}
+
+.section-header--left {
+  align-items: flex-start;
+  text-align: left;
+  margin-left: 0;
+}
+
+.section-header__eyebrow {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 24px;
+  border: 1px solid currentColor;
+  opacity: 0.6; /* Adapts to light/dark backgrounds */
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.section-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.75rem); /* Reduced from 3.5rem */
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.section-header__description {
+  font-size: 0.95rem; /* Reduced from 1.1rem */
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 700px;
+}
+
+/* Dark Mode Overrides for Headers */
+.section-header--dark .section-header__title {
+  color: var(--white);
+}
+
+.section-header--dark .section-header__description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ========================================
+   GLOBAL FALLBACK ANIMATIONS
+   ======================================== */
+@keyframes fadeUpGlobal {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.anim-site-enter .anim-fade-up,
+.hero-v2 .anim-fade-up,
+.hero-split .anim-fade-up,
+.bento-section .anim-fade-up,
+.blog-list-section .anim-fade-up {
+  animation: fadeUpGlobal 0.8s var(--ease-out-expo) forwards;
 }

@@ -1,0 +1,357 @@
+/* ========================================
+   STRATEGIC SERVICES SECTION
+   ======================================== */
+
+.strategic-services-section {
+  width: 100%;
+  background-color: #171918; /* Dark charcoal/navy */
+  padding: clamp(60px, 8vw, 100px) 0;
+  color: #fff;
+  font-family: var(--font-body);
+}
+
+/* --------------------------------------
+   TABS NAVIGATION
+----------------------------------------- */
+.ss-tabs-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.ss-tabs-nav {
+  display: inline-flex;
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 100px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ss-tabs-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.ss-tab-bg-indicator {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  background-color: var(--gold-primary);
+  border-radius: 100px;
+  transition: transform 0.4s var(--ease-out-expo), width 0.4s var(--ease-out-expo);
+  z-index: 1;
+}
+
+.ss-tab-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 24px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.ss-tab-btn:hover:not(.is-active) {
+  color: #fff;
+}
+
+.ss-tab-btn.is-active {
+  color: var(--navy) !important;
+  font-weight: 600;
+}
+
+/* --------------------------------------
+   CONTENT AREA
+----------------------------------------- */
+.ss-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  min-height: 500px;
+  margin-bottom: 24px;
+}
+
+.ss-tab-content-anim {
+  animation: tabFadeIn 0.4s ease forwards;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Left side text card */
+.ss-text-card {
+  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(245,245,245,0.95) 100%);
+  border-radius: 16px;
+  padding: clamp(32px, 4vw, 56px);
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 15px 25px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 1);
+  backdrop-filter: blur(10px);
+}
+
+.ss-text-title {
+  font-size: clamp(24px, 2vw, 32px);
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.ss-text-desc {
+  font-size: clamp(15px, 1.1vw, 16px);
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 40px;
+}
+
+.ss-bullets {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+}
+
+.ss-bullet-item {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+}
+
+.ss-bullet-item::before {
+  content: '•';
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+/* Right side image */
+.ss-image-col {
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  position: relative;
+  min-height: 400px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------
+   CTA BUTTON & MODAL
+----------------------------------------- */
+.ss-cta-btn {
+  margin-top: 32px;
+  background-color: var(--navy, #171918);
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-start;
+}
+
+.ss-cta-btn:hover {
+  background-color: #000;
+  transform: translateY(-2px);
+}
+
+.ss-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 24px;
+}
+
+.ss-modal-content {
+  background-color: #fff;
+  color: #111;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 960px;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+  animation: modalFadeIn 0.3s ease forwards;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ss-modal-image-col {
+  flex: 1.5;
+  background-size: cover;
+  background-position: center;
+  min-height: 100%;
+}
+
+.ss-modal-form-col {
+  flex: 1;
+  padding: clamp(32px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ss-modal-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(240, 240, 240, 0.8);
+  backdrop-filter: blur(4px);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  color: #111;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+.ss-modal-close:hover {
+  background: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.ss-modal-form-col h3 {
+  font-size: clamp(24px, 3vw, 32px);
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.ss-modal-form-col p {
+  font-size: 15px;
+  color: rgba(0,0,0,0.7);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.ss-join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ss-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ss-form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.8);
+}
+
+.ss-form-group input {
+  padding: 14px 16px;
+  border: 2px solid rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.02);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.ss-form-group input:hover {
+  border-color: rgba(0,0,0,0.2);
+}
+
+.ss-form-group input:focus {
+  background: #fff;
+  border-color: var(--gold-primary, #CBB170);
+  box-shadow: 0 0 0 4px rgba(203, 177, 112, 0.2);
+}
+
+.ss-submit-btn {
+  margin-top: 12px;
+  background-color: var(--gold-primary, #CBB170);
+  color: var(--navy, #171918);
+  border: none;
+  padding: 16px;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.ss-submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* --------------------------------------
+   RESPONSIVENESS
+----------------------------------------- */
+@media (max-width: 992px) {
+  .ss-content-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ss-tabs-nav {
+    gap: 32px;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .ss-modal-content {
+    flex-direction: column;
+  }
+  .ss-modal-image-col {
+    min-height: 240px;
+  }
+  .ss-modal-form-col {
+    padding: 32px 24px;
+  }
+}
