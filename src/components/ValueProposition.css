@@ -1,0 +1,137 @@
+/* ========================================
+   VALUE PROPOSITION SECTION (REFERENCE UI)
+   ======================================== */
+
+.value-prop {
+  background-color: var(--white);
+  padding: clamp(60px, 8vw, 100px) 0;
+  color: var(--navy);
+}
+
+.value-prop__container {
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(60px, 8vw, 100px);
+}
+
+/* --------------------------------------
+   MIDDLE ROW: PILLARS
+----------------------------------------- */
+.vp-pillars-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 60px 40px;
+}
+
+.vp-pillar-card {
+  position: relative;
+  padding-left: 32px;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Create the square grey icon box */
+.vp-pillar-icon {
+  width: 48px;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  margin-bottom: 24px;
+}
+
+.vp-pillar-title {
+  font-family: var(--font-body);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--navy);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.vp-pillar-desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-on-light-secondary); /* Soft grey */
+}
+
+/* --------------------------------------
+   BOTTOM ROW: CTA
+----------------------------------------- */
+.vp-bottom-row {
+  margin-left: calc(280px + 40px);
+  padding-left: 32px; /* Align perfectly with the first pillar text */
+}
+
+/* --------------------------------------
+   ANIMATIONS
+----------------------------------------- */
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.anim-mask-text {
+  display: block;
+  opacity: 0;
+  transform: translateY(110%);
+}
+
+.is-visible .anim-fade-up {
+  animation: vpFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.is-visible .anim-mask-text {
+  animation: vpMaskText 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.15s !important; }
+.delay-2 { animation-delay: 0.3s !important; }
+.delay-3 { animation-delay: 0.45s !important; }
+.delay-4 { animation-delay: 0.6s !important; }
+.delay-5 { animation-delay: 0.75s !important; }
+.delay-6 { animation-delay: 0.9s !important; }
+
+@keyframes vpFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vpMaskText {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-mask-text {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* --------------------------------------
+   RESPONSIVENESS
+----------------------------------------- */
+@media (max-width: 1024px) {
+  .vp-pillars-row {
+    margin-left: 0;
+  }
+  .vp-pillar-card {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .value-prop__container {
+    gap: 60px;
+  }
+  .vp-pillars-row {
+    gap: 48px;
+  }
+  .vp-pillar-card {
+    padding-left: 16px;
+  }
+}

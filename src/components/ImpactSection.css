@@ -1,0 +1,141 @@
+/* ========================================
+   IMPACT SECTION (OUR IMPACT UI)
+   ======================================== */
+
+.impact-section {
+  background-color: #ffffff;
+  color: #111111;
+  padding: clamp(60px, 8vw, 100px) 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.impact__container {
+  max-width: 960px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.impact__eyebrow {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background-color: rgba(0, 0, 0, 0.03);
+  color: var(--text-on-light);
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  opacity: 0.85;
+}
+
+.impact__quote {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 400;
+  line-height: 1.75;
+  color: #242936;
+  max-width: 800px;
+  margin: 0 auto;
+  letter-spacing: -0.01em;
+}
+
+.impact__quote p {
+  margin-bottom: 1.2em;
+}
+
+.impact__quote p:last-child {
+  margin-bottom: 0;
+}
+
+.impact__stats-grid {
+  display: flex;
+  width: 100%;
+  max-width: 880px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.impact__stat-col {
+  flex: 1;
+  text-align: center;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.impact__stat-value {
+  font-family: 'Georgia', 'Playfair Display', serif;
+  font-size: clamp(42px, 5.5vw, 64px);
+  font-weight: 400;
+  color: #111111;
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.impact__stat-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #777777;
+  line-height: 1.4;
+  max-width: 180px;
+}
+
+.impact__divider {
+  width: 1px;
+  height: 72px;
+  background-color: rgba(0, 0, 0, 0.12);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------
+   ANIMATIONS & REVEAL
+----------------------------------------- */
+.impact-section .anim-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.impact-section.is-visible .anim-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.impact-section .delay-1 {
+  transition-delay: 0.15s;
+}
+
+.impact-section .delay-2 {
+  transition-delay: 0.3s;
+}
+
+/* --------------------------------------
+   RESPONSIVENESS
+----------------------------------------- */
+@media (max-width: 768px) {
+  .impact__stats-grid {
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  .impact__divider {
+    width: 60px;
+    height: 1px;
+  }
+
+  .impact__stat-col {
+    padding: 0;
+  }
+}

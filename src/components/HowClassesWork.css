@@ -1,0 +1,86 @@
+/* --- How Classes Work --- */
+.hcw-section {
+  padding: 120px 24px;
+  background-color: var(--white);
+  border-top: 1px solid var(--border-light);
+}
+
+.hcw-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+/* We have overriden the colors in the jsx for the header so it shows up dark on white */
+
+.hcw-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 64px;
+}
+
+.hcw-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  transition: transform var(--duration-medium) var(--ease-out-expo), box-shadow var(--duration-medium) var(--ease-out-expo), border-color var(--duration-medium) var(--ease-out-expo);
+}
+
+.hcw-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  border-color: rgba(10, 10, 10, 0.2);
+}
+
+.hcw-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-light-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--gold-dark);
+}
+
+.hcw-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.hcw-card__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.hcw-card__desc {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .hcw-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hcw-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .hcw-card {
+    padding: 24px;
+  }
+}

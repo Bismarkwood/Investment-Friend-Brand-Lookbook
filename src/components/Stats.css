@@ -1,0 +1,121 @@
+/* ========================================
+   STATS SECTION
+   ======================================== */
+
+.stats-section {
+  background-color: var(--bg-light-grey);
+  padding: 24px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.stats__container {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats__eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-on-light-secondary);
+  margin-bottom: 24px;
+}
+
+.stats__grid {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.stats__col {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.stats__number {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--navy); /* Changed from forest-green to navy for consistency */
+  line-height: 1;
+  margin-bottom: 8px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s ease;
+}
+
+.stats__accent, .stats__accent-prefix {
+  color: var(--navy);
+  font-family: var(--font-body);
+}
+
+.stats__accent {
+  font-size: clamp(18px, 2vw, 22px);
+  margin-left: 4px;
+}
+
+.stats__accent-prefix {
+  font-size: clamp(14px, 1.5vw, 18px);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.stats__label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-on-light-secondary);
+  max-width: 220px;
+  line-height: 1.4;
+}
+
+/* --------------------------------------
+   HOVER EFFECTS
+----------------------------------------- */
+.stats__col:hover .stats__number {
+  transform: translateY(-8px);
+}
+
+/* --------------------------------------
+   ANIMATIONS
+----------------------------------------- */
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.is-visible .anim-fade-up {
+  animation: statsFadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.1s !important; }
+.delay-2 { animation-delay: 0.25s !important; }
+.delay-3 { animation-delay: 0.4s !important; }
+
+@keyframes statsFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --------------------------------------
+   RESPONSIVENESS
+----------------------------------------- */
+@media (max-width: 768px) {
+  .stats__grid {
+    flex-direction: column;
+    gap: 48px; /* Reduced gap for smaller height */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
