@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import SEO from '../components/SEO'
+import { organizationSchema, websiteSchema } from '../seo.config'
 import './Home.css'
 import HeroV2 from '../components/HeroV2'
 import Stories from '../components/Stories'
@@ -19,12 +20,8 @@ export default function Home() {
       <SEO 
         title="Financial Education in Ghana | Investment Friend"
         description="Learn to budget, save and understand investing in Ghana. Explore practical classes, personalised financial coaching, free tools and learning communities."
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Investment Friend",
-          "url": "https://investmentfriend.com"
-        }}
+        path="/"
+        schema={[organizationSchema, websiteSchema]}
       />
       <main>
         <HeroV2 

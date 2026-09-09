@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import SEO from '../components/SEO'
+import { breadcrumbSchema } from '../seo.config'
 import coverImg from '../assets/Cover Page/Social Intro.jpg'
 import logoImg from '../assets/Logo/Logo Transparent Gradient Gold.png'
 import brandFoundationImg from '../assets/Brand Foundation/Brand foundation.jpg'
@@ -390,6 +392,15 @@ export default function Brand() {
 
   return (
     <div className="site anim-site-enter">
+      <SEO
+        title="Brand Lookbook | Investment Friend"
+        description="The Investment Friend brand lookbook: logo marks, colour, typography and applications of a visual identity built around trust, confidence and progress."
+        path="/brand"
+        schema={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Brand Lookbook', path: '/brand' }
+        ])}
+      />
       <main>
         <HeroCover />
         <BrandIntro />

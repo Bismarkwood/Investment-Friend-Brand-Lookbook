@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BLOG_POSTS } from '../data/blogData';
+import SEO from '../components/SEO';
+import { articleSchema, breadcrumbSchema } from '../seo.config';
 import BlogPostHero from '../components/BlogPostHero';
 import CtaBanner from '../components/CtaBanner';
 import '../components/BlogList.css'; // For related cards styling
@@ -18,11 +20,23 @@ export default function BlogDetails() {
   if (!post) {
     return (
       <div className="blog-details__not-found">
+        <SEO
+          title="Article not found | Investment Friend"
+          description="The article you are looking for is not available. Browse the Investment Friend blog for practical personal finance articles."
+          noindex
+        />
         <h2>Blog post not found</h2>
         <Link to="/blog" className="blog-details__back-link">Return to blog list</Link>
       </div>
     );
   }
+
+  // Plain-text summary from the stored HTML, used for meta and social previews
+  const summary = post.content
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 158);
 
   // Get related posts (same category, excluding current)
   let relatedPosts = BLOG_POSTS.filter(p => p.category === post.category && p.id !== post.id);
@@ -40,6 +54,28 @@ export default function BlogDetails() {
 
   return (
     <div className="blog-details-page anim-site-enter">
+      <SEO
+        title={`${post.title} | Investment Friend`}
+        description={summary}
+        path={`/blog/${post.id}`}
+        image={post.image}
+        type="article"
+        schema={[
+          articleSchema({
+            title: post.title,
+            description: summary,
+            path: `/blog/${post.id}`,
+            image: post.image,
+            date: post.date,
+            author: post.author
+          }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Blog', path: '/resources/blog' },
+            { name: post.title, path: `/blog/${post.id}` }
+          ])
+        ]}
+      />
       <main>
         {/* Hero Section */}
         <BlogPostHero post={post} readTime={readingTime} />

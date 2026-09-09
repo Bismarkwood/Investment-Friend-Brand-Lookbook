@@ -1,5 +1,6 @@
 import React from 'react'
 import SEO from '../components/SEO'
+import { breadcrumbSchema } from '../seo.config'
 
 export default function Tools() {
   return (
@@ -7,6 +8,12 @@ export default function Tools() {
       <SEO 
         title="Free Budgeting Tools and Calculators | Investment Friend" 
         description="Access free budgeting templates, an investment calculator and a financial health checklist. Explore practical money management resources for life in Ghana."
+        path="/resources/tools"
+        schema={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Resources', path: '/resources/tools' },
+          { name: 'Tools', path: '/resources/tools' }
+        ])}
       />
       <main className="tools-page">
         <section className="hero-section hero-section--tools">

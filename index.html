@@ -2,19 +2,122 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Financial education and coaching in Ghana. Learn to budget, save and understand investing." />
+
+    <!-- Primary meta. Per-route values are set at runtime by src/components/SEO.jsx -->
     <title>Investment Friend | Financial Education in Ghana</title>
+    <meta name="description" content="Investment Friend is a financial education platform in Ghana. Learn to budget, save and understand investing through practical classes, personal coaching, learning clubs and free tools." />
+    <link rel="canonical" href="https://www.investmentfriend.com/" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Investment Friend" />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Investment Friend" />
+    <meta property="og:locale" content="en_GH" />
+    <meta property="og:url" content="https://www.investmentfriend.com/" />
+    <meta property="og:title" content="Investment Friend | Financial Education in Ghana" />
+    <meta property="og:description" content="Learn to budget, save and understand investing in Ghana through practical classes, personal coaching, learning clubs and free tools." />
+    <meta property="og:image" content="https://www.investmentfriend.com/og-image.jpg" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Investment Friend | Financial Education in Ghana" />
+    <meta name="twitter:description" content="Learn to budget, save and understand investing in Ghana through practical classes, personal coaching, learning clubs and free tools." />
+    <meta name="twitter:image" content="https://www.investmentfriend.com/og-image.jpg" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+
+    <!-- Structured data: organisation + site search. Page-level schema is added per route. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://www.investmentfriend.com/#organization",
+          "name": "Investment Friend",
+          "alternateName": "Investment Friend Ghana",
+          "url": "https://www.investmentfriend.com",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.investmentfriend.com/favicon.png"
+          },
+          "description": "Financial education platform in Ghana offering classes, coaching, learning clubs and free money tools.",
+          "areaServed": { "@type": "Country", "name": "Ghana" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Accra",
+            "addressRegion": "Greater Accra",
+            "addressCountry": "GH"
+          },
+          "knowsAbout": [
+            "Personal finance",
+            "Budgeting",
+            "Saving",
+            "Investing",
+            "Financial literacy",
+            "Wealth building"
+          ],
+          "sameAs": [
+            "https://www.linkedin.com/company/investment-friend",
+            "https://www.instagram.com/investment_friend/",
+            "https://www.tiktok.com/@investment_friend"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.investmentfriend.com/#website",
+          "url": "https://www.investmentfriend.com",
+          "name": "Investment Friend",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://www.investmentfriend.com/#organization" }
+        }
+      ]
+    }
+    </script>
+
     <style>
       html { scroll-behavior: smooth; }
     </style>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Fallback content for clients that do not execute JavaScript, including
+         several AI crawlers. Mirrors the site's key pages and offering. -->
+    <noscript>
+      <h1>Investment Friend — Financial Education in Ghana</h1>
+      <p>
+        Investment Friend helps people in Ghana budget, save and understand investing.
+        We run practical financial literacy classes, one-to-one coaching, learning clubs
+        and publish free money tools and articles.
+      </p>
+      <h2>What we offer</h2>
+      <ul>
+        <li><a href="/service/classes">Financial literacy classes</a> — beginner-friendly sessions on budgeting, saving and investing.</li>
+        <li><a href="/service/coaching">Personal financial coaching</a> — work through your own numbers with a coach.</li>
+        <li><a href="/service/club">Learning clubs</a> — Money Movers Club, Stock Club and Real Estate Circle.</li>
+        <li><a href="/resources/tools">Free tools</a> — budgeting templates and calculators.</li>
+        <li><a href="/resources/blog">Blog</a> — articles on personal finance in Ghana.</li>
+      </ul>
+      <h2>More</h2>
+      <ul>
+        <li><a href="/about">About Investment Friend</a></li>
+        <li><a href="/contact">Contact us</a></li>
+      </ul>
+      <p>Based in Accra, Ghana.</p>
+    </noscript>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './LegalPages.css';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function PrivacyPolicy() {
   const [activeSection, setActiveSection] = useState('information-collection');
@@ -53,10 +54,10 @@ export default function PrivacyPolicy() {
 
   return (
     <main className="page-legal anim-site-enter">
-      <title>Privacy Policy — Investment Friend</title>
-      <meta
-        name="description"
-        content="Read the Investment Friend Privacy Policy to understand how we collect, use, and protect your personal information."
+      <SEO
+        title="Privacy Policy | Investment Friend"
+        description="Read the Investment Friend Privacy Policy to understand how we collect, use, and protect your personal information."
+        path="/privacy"
       />
 
       <div className="legal-container container">

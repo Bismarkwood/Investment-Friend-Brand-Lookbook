@@ -42,7 +42,7 @@ export default function RecentBlogs() {
         </div>
 
         <div className="anim-fade-up" style={{ textAlign: 'center', marginTop: '64px' }}>
-          <Link to="/resources/blog" className="hero-btn hero-btn--primary" style={{ display: 'inline-flex' }}>
+          <Link to="/resources/blog" className="hero-btn hero-btn--primary cta-gold-anim" style={{ display: 'inline-flex' }}>
             <span>View Blogs</span>
             <span className="hero-btn__icon" style={{ backgroundColor: 'var(--gold-primary)' }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -1,6 +1,8 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { breadcrumbSchema } from '../seo.config';
 import '../components/HeroSplit.css';
+import './About.css';
 import OurStory from '../components/OurStory';
 import OurProcess from '../components/OurProcess';
 import OurApproach from '../components/OurApproach';
@@ -15,6 +17,11 @@ export default function About() {
       <SEO 
         title="About Investment Friend | Financial Education in Ghana"
         description="Meet the people behind Investment Friend. Discover our story, financial education approach and commitment to helping people in Ghana manage money better."
+        path="/about"
+        schema={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' }
+        ])}
       />
       <section className="hero-split">
         <div className="container">
@@ -27,7 +34,7 @@ export default function About() {
                 We believe financial education should be accessible, practical, and personal. Learn more about our mission and the experts guiding your financial journey.
               </p>
               <div className="hero-split__actions">
-                <a href="#story" className="hero-btn hero-btn--primary">
+                <a href="#story" className="hero-btn hero-btn--primary cta-gold-anim">
                   <span>Our Story</span>
                   <span className="hero-btn__icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>

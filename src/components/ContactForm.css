@@ -106,10 +106,107 @@
 
 /* Select */
 
-/* Submit */
-.contact-form__submit {
+/* Submit — Send Message CTA */
+.contact-send-btn {
+  position: relative;
   align-self: flex-start;
-  margin-top: 4px;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 56px;
+  padding: 0 12px 0 30px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-dark) 100%);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  box-shadow: 0 8px 22px rgba(212, 167, 50, 0.28);
+  transition: transform 0.3s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 0.3s ease,
+    background-position 0.5s ease;
+}
+
+.contact-send-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(212, 167, 50, 0.42);
+}
+
+.contact-send-btn:active {
+  transform: translateY(-1px);
+}
+
+.contact-send-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 167, 50, 0.4), 0 8px 22px rgba(212, 167, 50, 0.28);
+}
+
+.contact-send-btn__label {
+  position: relative;
+  z-index: 2;
+}
+
+/* Circular icon puck that nudges and lifts the plane on hover */
+.contact-send-btn__icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold-primary);
+  transition: transform 0.35s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.contact-send-btn__icon svg {
+  transition: transform 0.35s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.contact-send-btn:hover .contact-send-btn__icon svg {
+  transform: translate(2px, -2px) rotate(6deg);
+}
+
+/* Light sweep across the button on hover */
+.contact-send-btn__sheen {
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 45%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+
+.contact-send-btn:hover .contact-send-btn__sheen {
+  animation: contactSendSheen 0.8s ease forwards;
+}
+
+@keyframes contactSendSheen {
+  from { left: -60%; }
+  to { left: 130%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-send-btn,
+  .contact-send-btn__icon,
+  .contact-send-btn__icon svg {
+    transition: none;
+  }
+  .contact-send-btn:hover .contact-send-btn__sheen {
+    animation: none;
+  }
 }
 
 .contact-form__status {
@@ -215,7 +312,9 @@
     grid-template-columns: 1fr;
   }
 
-  .contact-form__submit {
+  .contact-send-btn {
+    align-self: stretch;
+    justify-content: space-between;
     width: 100%;
   }
 }

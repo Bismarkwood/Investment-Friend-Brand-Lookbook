@@ -32,7 +32,7 @@ export default function HeroV2({
           </p>
 
           <div className="hero-v2__cta-group anim-fade-up" style={{ animationDelay: '0.8s' }}>
-            <Link to={primaryButtonLink} className="btn-v2 btn-v2--primary">
+            <Link to={primaryButtonLink} className="btn-v2 btn-v2--primary cta-gold-anim">
               <span>{primaryButtonText}</span>
               <span className="btn-v2__icon-circle">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
@@ -47,6 +47,15 @@ export default function HeroV2({
           </div>
         </div>
       </div>
+
+      {/* Bottom design accent: scroll cue + animated gold hairline */}
+      <a href="#value" className="hero-v2__scroll-cue" aria-label="Scroll to content">
+        <span className="hero-v2__scroll-text">Scroll</span>
+        <span className="hero-v2__scroll-track">
+          <span className="hero-v2__scroll-dot" />
+        </span>
+      </a>
+      <div className="hero-v2__gold-line" aria-hidden="true" />
     </section>
   );
 }

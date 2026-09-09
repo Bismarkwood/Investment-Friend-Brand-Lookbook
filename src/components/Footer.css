@@ -1,11 +1,44 @@
 /* Footer.css */
 
 .footer {
+  position: relative;
   background-color: var(--navy);
   color: var(--white);
   padding-top: 100px;
   padding-bottom: 40px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animated gold gradient hairline along the top of the footer */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark),
+    var(--gold-light),
+    var(--gold-primary),
+    var(--gold-light),
+    var(--gold-dark)
+  );
+  background-size: 200% 100%;
+  animation: footerGoldFlow 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes footerGoldFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer::before {
+    animation: none;
+  }
 }
 
 /* -----------------------------

@@ -62,6 +62,7 @@ export default function ValueProposition() {
 
   return (
     <section 
+      id="value"
       className={`value-prop ${isVisible ? 'is-visible' : ''}`}
       ref={sectionRef}
     >

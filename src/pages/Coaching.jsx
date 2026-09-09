@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import SEO from '../components/SEO';
+import { breadcrumbSchema, serviceSchema } from '../seo.config';
 import HeroSplit from '../components/HeroSplit';
+import './Coaching.css';
 import ImpactSection from '../components/ImpactSection';
 import GoalGallery from '../components/GoalGallery';
 import GlassMetricsSection from '../components/GlassMetricsSection';
@@ -17,10 +19,25 @@ export default function Coaching() {
       <SEO 
         title="Financial Coaching in Ghana | Investment Friend"
         description="Book personalised financial coaching in Ghana. Work through your budget, savings, debt and financial goals with an experienced Investment Friend coach."
+        path="/service/coaching"
+        schema={[
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/service/coaching' },
+            { name: 'Coaching', path: '/service/coaching' }
+          ]),
+          serviceSchema({
+            name: 'Personal Financial Coaching',
+            description:
+              'One-to-one financial coaching in Ghana covering budgeting, savings, debt and long-term financial goals.',
+            path: '/service/coaching',
+            serviceType: 'Financial coaching'
+          })
+        ]}
       />
 
       <HeroSplit 
-        title={<>Personalised Financial Coaching<br />in Ghana</>}
+        title={<>Personalised Financial Coaching in Ghana</>}
         description="One-on-one coaching with experienced financial professionals who understand your situation, your goals, and the Ghanaian financial landscape."
         image={coachingHeroImg}
         imageAlt="Financial Coaching Session"

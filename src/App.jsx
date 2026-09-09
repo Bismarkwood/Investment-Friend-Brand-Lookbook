@@ -24,6 +24,14 @@ import Footer from './components/Footer'
    ============================== */
 function LogoIntro({ onComplete }) {
   const [phase, setPhase] = useState('enter')
+
+  // The page renders behind this overlay, so hold scrolling while it plays
+  useEffect(() => {
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = previous }
+  }, [])
+
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('hold'), 1200)
     const t2 = setTimeout(() => setPhase('exit'), 3400)
@@ -73,12 +81,10 @@ function LogoIntro({ onComplete }) {
    APP
    ============================== */
 export default function App() {
-  const [ready, setReady] = useState(false)
   const [introDone, setIntroDone] = useState(false)
 
   const handleIntroDone = useCallback(() => {
     setIntroDone(true)
-    setTimeout(() => setReady(true), 100)
   }, [])
 
   // Global scroll-reveal: observe every [data-reveal] element on the page
@@ -86,32 +92,32 @@ export default function App() {
 
   return (
     <>
+      {/* The intro is a fixed full-screen overlay. Routes render underneath it
+          from the first paint so crawlers never see an empty document. */}
       {!introDone && <LogoIntro onComplete={handleIntroDone} />}
-      {ready && (
-        <Routes>
-          {/* Public Website Routes */}
-          <Route path="/" element={<><Navbar /><Outlet /><Footer /></>}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="brand" element={<Brand />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="service/club" element={<Club />} />
-            <Route path="club" element={<Club />} />
-            <Route path="service/classes" element={<Classes />} />
-            <Route path="classes" element={<Classes />} />
-            <Route path="service/coaching" element={<Coaching />} />
-            <Route path="coaching" element={<Coaching />} />
-            <Route path="resources/blog" element={<Blog />} />
-            <Route path="blog" element={<Blog />} />
-            <Route path="blog/:id" element={<BlogDetails />} />
-            <Route path="resources/tools" element={<Tools />} />
-            <Route path="tools" element={<Tools />} />
-            <Route path="cookies" element={<CookiePolicy />} />
-            <Route path="privacy" element={<PrivacyPolicy />} />
-            <Route path="terms" element={<TermsOfService />} />
-          </Route>
-        </Routes>
-      )}
+      <Routes>
+        {/* Public Website Routes */}
+        <Route path="/" element={<><Navbar /><Outlet /><Footer /></>}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="brand" element={<Brand />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="service/club" element={<Club />} />
+          <Route path="club" element={<Club />} />
+          <Route path="service/classes" element={<Classes />} />
+          <Route path="classes" element={<Classes />} />
+          <Route path="service/coaching" element={<Coaching />} />
+          <Route path="coaching" element={<Coaching />} />
+          <Route path="resources/blog" element={<Blog />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="blog/:id" element={<BlogDetails />} />
+          <Route path="resources/tools" element={<Tools />} />
+          <Route path="tools" element={<Tools />} />
+          <Route path="cookies" element={<CookiePolicy />} />
+          <Route path="privacy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<TermsOfService />} />
+        </Route>
+      </Routes>
     </>
   )
 }

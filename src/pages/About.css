@@ -1,0 +1,75 @@
+/* About.css — page-specific hero overrides */
+
+/* The dark body background was showing through the hero section's bottom
+   margin as a black band beneath the image. Keep the page light. */
+.page-about {
+  background-color: var(--white);
+}
+
+/* The about hero photo is tall (portrait). Give the image container more
+   height so it fills the frame with no empty band beneath it, and pull the
+   crop toward the top so the people's faces stay in view. */
+.page-about .hero-split__image-wrap {
+  height: clamp(620px, 90vh, 1000px);
+}
+
+/* Pull the Our Story section closer to the hero image */
+.page-about .hero-split {
+  margin-bottom: 32px;
+}
+
+.page-about .hero-split__image {
+  object-position: center 20%;
+}
+
+/* -----------------------------------------------
+   HERO IMAGE — cinematic reveal
+   A clip-path wipe uncovers the frame, then the
+   photo holds a slow, continuous ken-burns zoom.
+----------------------------------------------- */
+
+/* Override the inline anim-fade-up so the wipe drives the entrance */
+.page-about .hero-split__image-wrap.anim-fade-up {
+  opacity: 1;
+  transform: none;
+  animation: none;
+  overflow: hidden;
+  clip-path: inset(0 0 100% 0);
+  animation: aboutHeroReveal 1.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) 0.2s forwards;
+}
+
+.page-about .hero-split__image {
+  transform: scale(1.12);
+  animation: aboutHeroZoom 18s ease-out 0.2s forwards;
+  will-change: transform;
+}
+
+/* Wipe the container open from top to bottom */
+@keyframes aboutHeroReveal {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* Settle the initial over-scale, then continue a gentle push-in */
+@keyframes aboutHeroZoom {
+  0% { transform: scale(1.12); }
+  20% { transform: scale(1.06); }
+  100% { transform: scale(1.14); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-about .hero-split__image-wrap.anim-fade-up {
+    clip-path: none;
+    animation: none;
+  }
+  .page-about .hero-split__image {
+    transform: none;
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-about .hero-split__image-wrap {
+    height: clamp(480px, 70vh, 680px);
+  }
+}

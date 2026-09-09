@@ -179,10 +179,105 @@
   transform: translateX(4px);
 }
 
+/* --- Bottom design accent --- */
+
+/* Animated gold gradient hairline along the bottom edge */
+.hero-v2__gold-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  z-index: 12;
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark),
+    var(--gold-light),
+    var(--gold-primary),
+    var(--gold-light),
+    var(--gold-dark)
+  );
+  background-size: 200% 100%;
+  animation: heroGoldFlow 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes heroGoldFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Scroll cue */
+.hero-v2__scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(28px, 4vw, 44px);
+  transform: translateX(-50%);
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--duration-fast) var(--ease-out-expo);
+}
+
+.hero-v2__scroll-cue:hover {
+  color: var(--gold-primary);
+}
+
+.hero-v2__scroll-text {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.hero-v2__scroll-track {
+  position: relative;
+  width: 24px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-v2__scroll-cue:hover .hero-v2__scroll-track {
+  border-color: var(--gold-primary);
+}
+
+.hero-v2__scroll-dot {
+  position: absolute;
+  top: 8px;
+  width: 4px;
+  height: 8px;
+  border-radius: 100px;
+  background: currentColor;
+  animation: heroScrollDot 1.8s var(--ease-out-expo) infinite;
+}
+
+@keyframes heroScrollDot {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  70% { opacity: 1; transform: translateY(14px); }
+  100% { opacity: 0; transform: translateY(18px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-v2__gold-line { animation: none; }
+  .hero-v2__scroll-dot { animation: none; opacity: 1; }
+}
+
 /* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .hero-v2__content {
     padding-top: 0;
+  }
+
+  .hero-v2__scroll-cue {
+    display: none;
   }
 
   .hero-v2__cta-group {

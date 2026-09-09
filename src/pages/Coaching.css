@@ -1,0 +1,62 @@
+/* Coaching.css — page-specific hero fixes */
+
+/* The dark body background was showing through the hero section's bottom
+   margin as a black band beneath the image. Keep the page light. */
+.page-coaching {
+  background-color: var(--white);
+}
+
+/* Pull the next section closer to the hero image */
+.page-coaching .hero-split {
+  margin-bottom: 32px;
+}
+
+/* Nudge the crop up so heads/faces are not cut off at the top */
+.page-coaching .hero-split__image {
+  object-position: center 30%;
+}
+
+/* -----------------------------------------------
+   HERO IMAGE — cinematic reveal
+   A clip-path wipe uncovers the frame, then the
+   photo holds a slow, continuous ken-burns zoom.
+----------------------------------------------- */
+
+/* Override the inline anim-fade-up so the wipe drives the entrance */
+.page-coaching .hero-split__image-wrap.anim-fade-up {
+  opacity: 1;
+  transform: none;
+  overflow: hidden;
+  clip-path: inset(0 0 100% 0);
+  animation: coachingHeroReveal 1.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) 0.2s forwards;
+}
+
+.page-coaching .hero-split__image {
+  transform: scale(1.12);
+  animation: coachingHeroZoom 18s ease-out 0.2s forwards;
+  will-change: transform;
+}
+
+/* Wipe the container open from top to bottom */
+@keyframes coachingHeroReveal {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* Settle the initial over-scale, then continue a gentle push-in */
+@keyframes coachingHeroZoom {
+  0% { transform: scale(1.12); }
+  20% { transform: scale(1.06); }
+  100% { transform: scale(1.14); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-coaching .hero-split__image-wrap.anim-fade-up {
+    clip-path: none;
+    animation: none;
+  }
+  .page-coaching .hero-split__image {
+    transform: none;
+    animation: none;
+  }
+}

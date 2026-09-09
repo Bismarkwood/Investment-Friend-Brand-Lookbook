@@ -5,8 +5,19 @@
   background-color: var(--white);
 }
 
+/* Give the hero image container more height so it does not feel cramped. */
+.page-contact .hero-split__image-wrap {
+  height: clamp(560px, 82vh, 900px);
+}
+
 /* The hero photo is portrait in a wide frame, so nudge the crop upward
    to keep faces in view instead of cropping through them. */
-.page-contact .hero__bg-img {
-  object-position: center 28%;
+.page-contact .hero-split__image {
+  object-position: center 25%;
+}
+
+@media (max-width: 900px) {
+  .page-contact .hero-split__image-wrap {
+    height: clamp(440px, 65vh, 640px);
+  }
 }

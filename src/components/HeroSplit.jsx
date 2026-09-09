@@ -27,7 +27,7 @@ export default function HeroSplit({
               {primaryBtnText && (
                 <a 
                   href={primaryBtnLink || "#"} 
-                  className="hero-btn hero-btn--primary"
+                  className="hero-btn hero-btn--primary cta-gold-anim"
                   onClick={(e) => {
                     if (primaryBtnOnClick) {
                       e.preventDefault();

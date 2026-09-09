@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { breadcrumbSchema, serviceSchema } from '../seo.config';
 import clubHeroImg from '../assets/club-hero-bg.png';
 import exclusiveClubsImg from '../assets/exclusive-clubs-card.jpg';
 import './Club.css';
@@ -14,6 +15,21 @@ export default function Club() {
       <SEO 
         title="Investment Learning Clubs in Ghana | Investment Friend"
         description="Explore Money Movers Club, Stock Club and Real Estate Circle. Compare Investment Friend communities, member benefits and ways to keep learning in Ghana."
+        path="/service/club"
+        schema={[
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Services', path: '/service/club' },
+            { name: 'Clubs', path: '/service/club' }
+          ]),
+          serviceSchema({
+            name: 'Investment Learning Clubs',
+            description:
+              'Members-only learning communities in Ghana: Money Movers Club, Stock Club and Real Estate Circle.',
+            path: '/service/club',
+            serviceType: 'Investment learning community'
+          })
+        ]}
       />
 
       <HeroSplit 

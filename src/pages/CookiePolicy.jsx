@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './LegalPages.css';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function CookiePolicy() {
   const [activeSection, setActiveSection] = useState('what-are-cookies');
@@ -73,10 +74,10 @@ export default function CookiePolicy() {
 
   return (
     <main className="page-legal anim-site-enter">
-      <title>Cookie Policy — Investment Friend</title>
-      <meta
-        name="description"
-        content="Read the Investment Friend Cookie Policy to understand how we use cookies and similar technologies on our platform."
+      <SEO
+        title="Cookie Policy | Investment Friend"
+        description="Read the Investment Friend Cookie Policy to understand how we use cookies and similar technologies on our platform."
+        path="/cookies"
       />
 
       <div className="legal-container container">

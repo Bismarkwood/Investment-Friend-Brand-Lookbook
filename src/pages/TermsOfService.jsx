@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './LegalPages.css';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function TermsOfService() {
   const [activeSection, setActiveSection] = useState('agreement');
@@ -53,10 +54,10 @@ export default function TermsOfService() {
 
   return (
     <main className="page-legal anim-site-enter">
-      <title>Terms of Service — Investment Friend</title>
-      <meta
-        name="description"
-        content="Read the Investment Friend Terms of Service outlining the rules, guidelines, and agreements for using our platform."
+      <SEO
+        title="Terms of Service | Investment Friend"
+        description="Read the Investment Friend Terms of Service outlining the rules, guidelines, and agreements for using our platform."
+        path="/terms"
       />
 
       <div className="legal-container container">
