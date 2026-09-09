@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './ValueProposition.css';
-import { Link } from 'react-router-dom';
 
 export default function ValueProposition() {
   const sectionRef = useRef(null);

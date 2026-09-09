@@ -1,6 +1,5 @@
 import React from 'react';
 import SEO from '../components/SEO';
-import { Link } from 'react-router-dom';
 import clubHeroImg from '../assets/club-hero-bg.png';
 import exclusiveClubsImg from '../assets/exclusive-clubs-card.jpg';
 import './Club.css';

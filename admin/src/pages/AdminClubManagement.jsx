@@ -8,11 +8,7 @@ export default function AdminClubManagement() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    fetchApplicants();
-  }, []);
-
-  const fetchApplicants = async () => {
+  const fetchApplicants = React.useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('applicants')
@@ -27,7 +23,11 @@ export default function AdminClubManagement() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchApplicants();
+  }, [fetchApplicants]);
 
   const filteredApplicants = applicants.filter(app => 
     app.name.toLowerCase().includes(searchTerm.toLowerCase()) || 

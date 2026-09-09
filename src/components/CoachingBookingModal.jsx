@@ -17,6 +17,20 @@ export default function CoachingBookingModal({ isOpen, onClose }) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const handleClose = React.useCallback(() => {
+    onClose();
+    setTimeout(() => {
+      setSubmitStatus(null);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        focus: 'Investment & Wealth Building',
+        preferredTime: 'Morning (9:00 AM - 12:00 PM)',
+        notes: ''
+      });
+    }, 300);
+  }, [onClose]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -36,24 +50,9 @@ export default function CoachingBookingModal({ isOpen, onClose }) {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, handleClose]);
 
   if (!isOpen) return null;
-
-  const handleClose = () => {
-    onClose();
-    setTimeout(() => {
-      setSubmitStatus(null);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        focus: 'Investment & Wealth Building',
-        preferredTime: 'Morning (9:00 AM - 12:00 PM)',
-        notes: ''
-      });
-    }, 300);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

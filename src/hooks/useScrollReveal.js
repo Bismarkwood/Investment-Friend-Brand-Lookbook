@@ -41,5 +41,6 @@ export default function useScrollReveal(selector = '[data-reveal]', options = {}
       observer.disconnect();
       mutationObserver.disconnect();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 }

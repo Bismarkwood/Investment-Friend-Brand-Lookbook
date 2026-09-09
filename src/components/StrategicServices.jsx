@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { supabase } from '../lib/supabaseClient';
 import './StrategicServices.css';
-import { Link } from 'react-router-dom';
 import moneyMoversImg from '../assets/money-movers-bg.jpg';
 import stockClubImg from '../assets/Stock Club.jpg';
 import realEstateCircleImg from '../assets/real-estate-circle-bg.jpg';
@@ -194,7 +193,7 @@ export default function StrategicServices({
     }
   };
 
-  const updateIndicator = () => {
+  const updateIndicator = React.useCallback(() => {
     const activeIndex = data.findIndex(s => s.id === activeTab);
     const activeEl = tabsRef.current[activeIndex];
     if (activeEl) {
@@ -203,7 +202,7 @@ export default function StrategicServices({
         transform: `translateX(${activeEl.offsetLeft}px)`
       });
     }
-  };
+  }, [activeTab, data]);
 
   useEffect(() => {
     updateIndicator();
@@ -220,7 +219,7 @@ export default function StrategicServices({
       window.removeEventListener('resize', updateIndicator);
       clearTimeout(timeoutId);
     };
-  }, [activeTab]);
+  }, [activeTab, updateIndicator]);
 
   return (
     <section className="strategic-services-section">

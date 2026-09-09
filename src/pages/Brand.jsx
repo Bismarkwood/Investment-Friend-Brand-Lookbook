@@ -258,7 +258,7 @@ function BrandIntro() {
 function ContinuousLookbook() {
   return (
     <div className="lookbook-scroll" id="albums">
-      {ALBUMS.map((album, i) => {
+      {ALBUMS.map((album) => {
         const hasImages = album.pages.some(p => p.img);
         if (!hasImages) return null;
 
