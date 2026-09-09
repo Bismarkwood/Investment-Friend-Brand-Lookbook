@@ -136,6 +136,7 @@
 
 .contact-send-btn:hover {
   transform: translateY(-3px);
+  background-position: 100% 50%;
   box-shadow: 0 14px 32px rgba(212, 167, 50, 0.42);
 }
 

@@ -43,7 +43,7 @@ export default function Contact() {
                 Whether you have a question about classes, want to book coaching, or just want to say hello, we are here.
               </p>
               <div className="hero-split__actions">
-                <a href="#contact-form" className="hero-btn hero-btn--primary cta-gold-anim">
+                <a href="#contact-form" className="hero-btn hero-btn--primary">
                   <span>Send a Message</span>
                   <span className="hero-btn__icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>

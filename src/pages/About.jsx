@@ -34,7 +34,7 @@ export default function About() {
                 We believe financial education should be accessible, practical, and personal. Learn more about our mission and the experts guiding your financial journey.
               </p>
               <div className="hero-split__actions">
-                <a href="#story" className="hero-btn hero-btn--primary cta-gold-anim">
+                <a href="#story" className="hero-btn hero-btn--primary">
                   <span>Our Story</span>
                   <span className="hero-btn__icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>

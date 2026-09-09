@@ -129,7 +129,7 @@ export default function CoachingBookingModal({ isOpen, onClose }) {
                   <strong>{formData.preferredTime}</strong>
                 </div>
               </div>
-              <button className="coaching-btn-primary cta-gold-anim" onClick={handleClose}>
+              <button className="coaching-btn-primary" onClick={handleClose}>
                 Done
               </button>
             </div>
@@ -228,7 +228,7 @@ export default function CoachingBookingModal({ isOpen, onClose }) {
               </div>
 
               <div className="form-actions">
-                <button type="submit" className="coaching-btn-primary cta-gold-anim" disabled={isSubmitting}>
+                <button type="submit" className="coaching-btn-primary" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <span className="btn-spinner-wrap">
                       <span className="btn-spinner"></span>

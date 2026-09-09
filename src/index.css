@@ -88,41 +88,6 @@ button { cursor: pointer; font-family: var(--font-body); }
   color: var(--gold-primary);
 }
 
-/* ========================================
-   ANIMATED GOLD CTA GRADIENT
-   Shared looping gradient for primary CTA buttons.
-   Apply the class alongside a button's own styles.
-   ======================================== */
-.cta-gold-anim {
-  background-image: linear-gradient(
-    90deg,
-    var(--gold-dark) 0%,
-    var(--gold-primary) 20%,
-    var(--gold-light) 40%,
-    var(--gold-primary) 60%,
-    var(--gold-dark) 80%,
-    var(--gold-primary) 100%
-  ) !important;
-  background-size: 300% 100% !important;
-  background-repeat: no-repeat !important;
-  /* Let only background-position animate; do not transition it, or the loop
-     gets damped by the global button transition and looks static. */
-  transition: transform 0.28s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
-    box-shadow 0.28s ease !important;
-  animation: ctaGoldFlow 3s linear infinite !important;
-}
-
-@keyframes ctaGoldFlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: -150% 50%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cta-gold-anim {
-    animation: none !important;
-  }
-}
-
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--navy); }

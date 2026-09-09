@@ -133,7 +133,7 @@ export default function ContactForm() {
               />
             </div>
 
-            <button type="submit" className="contact-send-btn cta-gold-anim">
+            <button type="submit" className="contact-send-btn">
               <span className="contact-send-btn__sheen" aria-hidden="true" />
               <span className="contact-send-btn__label">Send Message</span>
               <span className="contact-send-btn__icon" aria-hidden="true">

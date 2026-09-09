@@ -123,7 +123,7 @@ export default function ClassApplyModal({ isOpen, onClose, classInfo }) {
                   <strong>{classInfo.date}</strong>
                 </div>
               </div>
-              <button className="apply-btn-primary cta-gold-anim" onClick={handleClose}>Done</button>
+              <button className="apply-btn-primary" onClick={handleClose}>Done</button>
             </div>
           ) : (
             <div className="apply-modal-body">
@@ -202,7 +202,7 @@ export default function ClassApplyModal({ isOpen, onClose, classInfo }) {
                 </div>
 
                 <div className="form-actions">
-                  <button type="submit" className="apply-btn-primary cta-gold-anim" disabled={isSubmitting}>
+                  <button type="submit" className="apply-btn-primary" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <span className="btn-spinner-wrap">
                         <span className="btn-spinner"></span>

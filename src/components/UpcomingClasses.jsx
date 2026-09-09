@@ -101,7 +101,7 @@ export default function UpcomingClasses() {
 
                 <button
                   type="button"
-                  className="class-card__apply cta-gold-anim"
+                  className="class-card__apply"
                   onClick={() => setSelectedClass(cls)}
                 >
                   <span>Apply</span>
