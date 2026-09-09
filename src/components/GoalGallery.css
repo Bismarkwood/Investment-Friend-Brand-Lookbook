@@ -1,0 +1,250 @@
+/* ========================================
+   GOAL GALLERY SECTION
+   ======================================== */
+
+.goal-gallery-section {
+  background-color: #000000;
+  color: #ffffff;
+  padding: clamp(80px, 11vw, 150px) 0;
+  overflow: hidden;
+}
+
+.goal__container {
+  max-width: 1560px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --------------------------------------
+   TOP HEADER LAYOUT (SPLIT)
+----------------------------------------- */
+.goal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-bottom: clamp(48px, 6vw, 80px);
+}
+
+.goal__eyebrow {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+.goal__heading {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2vw, 24px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 660px;
+  margin-left: 0;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------
+   3-CARD ASYMMETRICAL GRID
+----------------------------------------- */
+.goal__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.75fr 0.9fr;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.goal__card {
+  display: flex;
+  flex-direction: column;
+}
+
+.goal__image-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  background-color: #111111;
+}
+
+.goal__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goal__card:hover .goal__image {
+  transform: scale(1.03);
+}
+
+/* Card Specific Aspect Ratios & Heights (Taller & Wider) */
+.goal__card--left .goal__image-wrap {
+  aspect-ratio: 1.1 / 1;
+}
+
+.goal__card--center .goal__image-wrap {
+  aspect-ratio: 0.88 / 1;
+}
+
+.goal__card--right .goal__image-wrap {
+  aspect-ratio: 0.6 / 1;
+}
+
+.goal__card-text {
+  margin-top: 16px;
+  max-width: 340px;
+}
+
+.goal__card-title {
+  font-family: var(--font-body);
+  font-size: 15.5px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.goal__caption {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 0;
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------
+   CENTER CARD OVERLAY & MOVING GRADIENT
+----------------------------------------- */
+.goal__image-wrap--overlay {
+  position: relative;
+}
+
+.goal__overlay-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 15%,
+    rgba(0, 0, 0, 0.45) 55%,
+    rgba(0, 0, 0, 0.94) 100%
+  );
+  background-size: 100% 160%;
+  animation: movingGradient 6s ease-in-out infinite alternate;
+}
+
+@keyframes movingGradient {
+  0% {
+    background-position: 0% 0%;
+    opacity: 0.88;
+  }
+  50% {
+    opacity: 0.98;
+  }
+  100% {
+    background-position: 0% 100%;
+    opacity: 0.92;
+  }
+}
+
+.goal__overlay-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(24px, 3.5vw, 36px);
+  z-index: 2;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.goal__overlay-title {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.goal__overlay-desc {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  max-width: 440px;
+  letter-spacing: -0.01em;
+}
+
+/* --------------------------------------
+   ANIMATIONS & REVEAL
+----------------------------------------- */
+.goal-gallery-section .anim-fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goal-gallery-section.is-visible .anim-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.goal-gallery-section .delay-1 {
+  transition-delay: 0.2s;
+}
+
+/* --------------------------------------
+   RESPONSIVENESS
+----------------------------------------- */
+@media (max-width: 992px) {
+  .goal__header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .goal__eyebrow {
+    flex: none;
+    padding-top: 0;
+  }
+
+  .goal__heading {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .goal__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .goal__card--left .goal__image-wrap,
+  .goal__card--center .goal__image-wrap,
+  .goal__card--right .goal__image-wrap {
+    aspect-ratio: 16 / 10;
+  }
+
+  .goal__caption {
+    max-width: 100%;
+  }
+}

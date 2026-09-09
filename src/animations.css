@@ -1,0 +1,356 @@
+/* ============================================================
+   INVESTMENT FRIEND — GLOBAL ANIMATION SYSTEM
+   animations.css
+   ============================================================ */
+
+/* -----------------------------------------------
+   1. KEYFRAMES
+----------------------------------------------- */
+
+@keyframes revealFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealFadeDown {
+  from { opacity: 0; transform: translateY(-32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealFadeLeft {
+  from { opacity: 0; transform: translateX(48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes revealFadeRight {
+  from { opacity: 0; transform: translateX(-48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes revealScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes revealFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 167, 50, 0); }
+  50%       { box-shadow: 0 0 28px 6px rgba(212, 167, 50, 0.22); }
+}
+
+/* -----------------------------------------------
+   2. SCROLL REVEAL BASE — elements start hidden
+      until [data-reveal] gets .is-revealed
+----------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; }
+  [data-reveal].is-revealed { animation: none !important; transform: none !important; }
+}
+
+/* -----------------------------------------------
+   3. SCROLL REVEAL VARIANTS
+----------------------------------------------- */
+
+/* Default: fade + rise */
+[data-reveal].is-revealed,
+[data-reveal="up"].is-revealed {
+  animation: revealFadeUp 0.75s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+
+[data-reveal="down"].is-revealed {
+  animation: revealFadeDown 0.75s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+
+[data-reveal="left"].is-revealed {
+  animation: revealFadeLeft 0.75s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+
+[data-reveal="right"].is-revealed {
+  animation: revealFadeRight 0.75s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+
+[data-reveal="scale"].is-revealed {
+  animation: revealScale 0.7s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+
+[data-reveal="fade"].is-revealed {
+  animation: revealFade 0.8s ease forwards;
+}
+
+/* -----------------------------------------------
+   4. STAGGER DELAYS  (data-delay="1" … "8")
+----------------------------------------------- */
+[data-delay="1"] { animation-delay: 0.08s !important; }
+[data-delay="2"] { animation-delay: 0.16s !important; }
+[data-delay="3"] { animation-delay: 0.24s !important; }
+[data-delay="4"] { animation-delay: 0.32s !important; }
+[data-delay="5"] { animation-delay: 0.44s !important; }
+[data-delay="6"] { animation-delay: 0.56s !important; }
+[data-delay="7"] { animation-delay: 0.68s !important; }
+[data-delay="8"] { animation-delay: 0.80s !important; }
+
+/* -----------------------------------------------
+   5. HOVER — CARDS
+      Works on any .card, .ss-card, .wiif-card,
+      .reels__card-wrapper, .goal-card etc.
+----------------------------------------------- */
+.hover-lift {
+  transition:
+    transform 0.35s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 0.35s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* Generic card hover across the whole site */
+.ss-card,
+.goal-card,
+.reels__card-wrapper,
+.wiif-card--text,
+.impact-card,
+.metrics-card,
+.bento-card {
+  transition:
+    transform 0.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease !important;
+}
+
+.ss-card:hover,
+.goal-card:hover,
+.reels__card-wrapper:hover,
+.wiif-card--text:hover,
+.impact-card:hover,
+.metrics-card:hover,
+.bento-card:hover {
+  transform: translateY(-6px) scale(1.015) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* -----------------------------------------------
+   6. HOVER — BUTTONS
+----------------------------------------------- */
+.btn,
+.cta-banner__btn,
+.hero-split__btn--primary,
+.hero-split__btn--secondary,
+.ss-cta-btn,
+.coaching-btn-primary,
+button[class*="btn"],
+a[class*="btn"] {
+  transition:
+    transform 0.28s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 0.28s ease,
+    background 0.25s ease,
+    color 0.25s ease !important;
+}
+
+.btn:hover,
+.cta-banner__btn:hover,
+.hero-split__btn--primary:hover,
+.ss-cta-btn:hover,
+.coaching-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 28px rgba(212, 167, 50, 0.3) !important;
+}
+
+.hero-split__btn--secondary:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* -----------------------------------------------
+   7. HOVER — NAVIGATION LINKS
+----------------------------------------------- */
+.nav-link,
+.navbar__link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after,
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold-primary, #d4a732);
+  border-radius: 2px;
+  transition: width 0.35s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.nav-link:hover::after,
+.navbar__link:hover::after {
+  width: 100%;
+}
+
+/* -----------------------------------------------
+   8. HOVER — IMAGES
+----------------------------------------------- */
+.wiif-card--image img,
+.ss-card img,
+.goal-card img,
+.hero-split__image,
+.reels__custom-card img {
+  transition: transform 0.6s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) !important;
+}
+
+.wiif-card--image:hover img,
+.ss-card:hover img,
+.goal-card:hover img,
+.reels__card-wrapper:hover .reels__custom-card img {
+  transform: scale(1.05) !important;
+}
+
+/* -----------------------------------------------
+   9. HOVER — LOGO & ICON FLOATS
+----------------------------------------------- */
+.navbar__logo,
+.footer-logo {
+  transition: transform 0.4s ease;
+}
+
+.navbar__logo:hover,
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+/* -----------------------------------------------
+   10. SMOOTH PAGE ENTER
+----------------------------------------------- */
+.page-home,
+.page-coaching,
+.page-about,
+.page-services,
+.page-contact,
+.page-club,
+[class*="page-"] {
+  animation: revealFade 0.5s ease forwards;
+}
+
+/* -----------------------------------------------
+   11. SECTION HEADER — stagger
+----------------------------------------------- */
+.section-header__eyebrow  { transition-delay: 0s; }
+.section-header__title    { transition-delay: 0.08s; }
+.section-header__description { transition-delay: 0.16s; }
+
+/* -----------------------------------------------
+   12. GOLD SHIMMER on .gold-text on hover
+----------------------------------------------- */
+.gold-text {
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark, #a87822) 0%,
+    var(--gold-primary, #d4a732) 40%,
+    var(--gold-light, #e8bf4a) 60%,
+    var(--gold-dark, #a87822) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3.5s linear infinite;
+}
+
+/* -----------------------------------------------
+   13. BROAD SITE-WIDE AUTO ANIMATIONS
+       — Sections that already use .is-visible
+         get the same reveal treatment
+----------------------------------------------- */
+
+/* Section headers inside visible sections */
+.value-prop.is-visible .section-header,
+.stories-section.is-visible .section-header,
+.reels-carousel-section.is-visible .reels__header,
+.ss-section .section-header,
+.impact-section .section-header,
+.cta-banner .cta-banner__content,
+.wiif-section .wiif-intro {
+  animation: revealFadeUp 0.75s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
+}
+
+/* CtaBanner internal hover */
+.cta-banner {
+  transition: opacity 0.5s ease;
+}
+
+.cta-banner__inner {
+  transition: transform 0.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.cta-banner:hover .cta-banner__inner {
+  transform: scale(1.01);
+}
+
+/* Stories / blog / recent blog cards */
+.story-card,
+.blog-card,
+.recent-blog-card,
+.client-story-card,
+.vp-pillar-card {
+  transition:
+    transform 0.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 0.4s ease !important;
+}
+
+.story-card:hover,
+.blog-card:hover,
+.recent-blog-card:hover,
+.client-story-card:hover,
+.vp-pillar-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14) !important;
+}
+
+/* Reels card-wrapper already has hover but we strengthen it */
+.reels__card-wrapper {
+  transition:
+    transform 0.45s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 0.45s ease !important;
+}
+
+.reels__card-wrapper:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Footer links */
+.footer a {
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer a:hover {
+  opacity: 1;
+  color: var(--gold-primary, #d4a732);
+}
+
+/* Smooth section transitions on scroll */
+section {
+  transition: opacity 0.1s ease;
+}
+

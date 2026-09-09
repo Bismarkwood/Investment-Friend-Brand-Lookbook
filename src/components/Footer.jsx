@@ -49,9 +49,9 @@ export default function Footer() {
             <div className="footer__nav-col">
               <h4 className="footer__col-title">Services</h4>
               <nav className="footer__nav-list">
-                <Link to="/service" className="footer__link">Club</Link>
-                <Link to="/service" className="footer__link">Classes</Link>
-                <Link to="/service" className="footer__link">Coaching</Link>
+                <Link to="/service/club" className="footer__link">Club</Link>
+                <Link to="/service/classes" className="footer__link">Classes</Link>
+                <Link to="/service/coaching" className="footer__link">Coaching</Link>
               </nav>
             </div>
 

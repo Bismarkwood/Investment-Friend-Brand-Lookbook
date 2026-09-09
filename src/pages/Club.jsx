@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import { Link } from 'react-router-dom';
 import clubHeroImg from '../assets/club-hero-bg.png';
 import exclusiveClubsImg from '../assets/exclusive-clubs-card.jpg';
@@ -11,14 +12,13 @@ import ClientStories from '../components/ClientStories';
 export default function Club() {
   return (
     <main className="page-club anim-site-enter">
-      <title>Investment Club — Investment Friend</title>
-      <meta
-        name="description"
-        content="Join the Investment Friend Club. Connect with like-minded investors, get exclusive insights, and grow your wealth together."
+      <SEO 
+        title="Investment Learning Clubs in Ghana | Investment Friend"
+        description="Explore Money Movers Club, Stock Club and Real Estate Circle. Compare Investment Friend communities, member benefits and ways to keep learning in Ghana."
       />
 
       <HeroSplit 
-        title={<>Build wealth<br />together.</>}
+        title={<>Investment Learning Communities<br />in Ghana</>}
         description="Three exclusive communities for people who want more than classes. Real insights. Real strategies. Real access."
         image={clubHeroImg}
         imageAlt="Club Hero"

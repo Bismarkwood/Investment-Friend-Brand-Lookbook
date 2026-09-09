@@ -591,6 +591,7 @@
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
+  z-index: 1001;
 }
 
 .nav__menu-btn span {
@@ -598,7 +599,7 @@
   width: 24px;
   height: 2px;
   background: var(--navy);
-  transition: background var(--duration-medium) var(--ease-out-quart);
+  transition: all var(--duration-medium) var(--ease-out-quart);
 }
 
 .nav--solid .nav__menu-btn span {
@@ -614,6 +615,93 @@
 .nav__menu-btn:hover span {
   background: var(--gold-primary);
 }
+
+.nav__menu-btn.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: var(--white);
+}
+.nav__menu-btn.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.nav__menu-btn.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: var(--white);
+}
+
+/* ---- MOBILE MENU OVERLAY ---- */
+.nav__mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.nav__mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav__mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.nav__mobile-link {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: var(--text-on-dark-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  letter-spacing: -0.02em;
+}
+
+.nav__mobile-link:hover,
+.nav__mobile-link--active {
+  color: var(--white);
+}
+
+.nav__mobile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.nav__mobile-section-title {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.nav__mobile-sublink {
+  font-size: 1.4rem;
+  color: var(--text-on-dark-secondary);
+  transition: color 0.3s ease;
+}
+
+.nav__mobile-sublink:hover {
+  color: var(--white);
+}
+
 
 /* ---- ANIMATIONS & REVEALS ---- */
 .anim-fade-in {

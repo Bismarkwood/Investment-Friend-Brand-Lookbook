@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './ContactForm.css';
+import CustomSelect from './CustomSelect';
 
 const ENQUIRY_OPTIONS = ['Classes', 'Coaching', 'Clubs', 'Partnership', 'Media', 'Other'];
 
@@ -109,21 +110,13 @@ export default function ContactForm() {
               </div>
               <div className="contact-form__field">
                 <label htmlFor="cf-enquiry">Enquiry</label>
-                <div className="contact-form__select-wrap">
-                  <select
-                    id="cf-enquiry"
-                    name="enquiry"
-                    value={form.enquiry}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="" disabled>Select an option</option>
-                    {ENQUIRY_OPTIONS.map((option) => (
-                      <option key={option} value={option}>{option}</option>
-                    ))}
-                  </select>
-                  <svg className="contact-form__select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
-                </div>
+                <CustomSelect
+                  id="cf-enquiry"
+                  value={form.enquiry}
+                  onChange={(val) => setForm((prev) => ({ ...prev, enquiry: val }))}
+                  placeholder="Select an option"
+                  options={ENQUIRY_OPTIONS}
+                />
               </div>
             </div>
 

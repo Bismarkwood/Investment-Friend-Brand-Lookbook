@@ -95,7 +95,7 @@ export default function BlogHero() {
               <div className="container blog-hero__content-container">
                 <div className="blog-hero__content">
                   <span className="blog-hero__category anim-fade-up">{post.category}</span>
-                  <h1 className="blog-hero__title anim-fade-up anim-delay-1">{post.title}</h1>
+                  <h2 className="blog-hero__title anim-fade-up anim-delay-1">{post.title}</h2>
                   <p className="blog-hero__excerpt anim-fade-up anim-delay-2">{post.excerpt}</p>
                   <div className="anim-fade-up anim-delay-3">
                     <Link to={post.link} className="blog-hero__btn">Read Article</Link>

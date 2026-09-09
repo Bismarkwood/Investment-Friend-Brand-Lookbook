@@ -75,7 +75,7 @@
 ----------------------------------------- */
 .ss-content-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
   min-height: 500px;
   margin-bottom: 24px;
@@ -334,10 +334,6 @@
    RESPONSIVENESS
 ----------------------------------------- */
 @media (max-width: 992px) {
-  .ss-content-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .ss-tabs-nav {
     gap: 32px;
     justify-content: flex-start;

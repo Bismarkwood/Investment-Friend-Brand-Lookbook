@@ -1,4 +1,5 @@
 import React from 'react'
+import SEO from '../components/SEO'
 import BlogHero from '../components/BlogHero'
 import BlogList from '../components/BlogList'
 import CtaBanner from '../components/CtaBanner'
@@ -6,7 +7,12 @@ import CtaBanner from '../components/CtaBanner'
 export default function Blog() {
   return (
     <div className="blog-page anim-site-enter">
+      <SEO 
+        title="Personal Finance and Investing in Ghana | Investment Friend"
+        description="Explore practical articles on budgeting, saving and investing in Ghana. Find clear explanations, worked examples and insights from the Investment Friend team."
+      />
       <main>
+        <h1 className="visually-hidden">Practical Guides to Managing Money in Ghana</h1>
         <BlogHero />
         <BlogList />
         <CtaBanner 

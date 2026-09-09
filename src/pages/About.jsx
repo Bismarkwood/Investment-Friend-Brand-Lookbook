@@ -1,21 +1,26 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import '../components/HeroSplit.css';
 import OurStory from '../components/OurStory';
 import OurProcess from '../components/OurProcess';
 import OurApproach from '../components/OurApproach';
+import ReelsCarousel from '../components/ReelsCarousel';
 import OurTeam from '../components/OurTeam';
 import CtaBanner from '../components/CtaBanner';
-import aboutHeroImg from '../assets/about-hero-bg.jpg';
+import aboutHeroImg from '../assets/about-hero-new.jpg';
 
 export default function About() {
   return (
     <main className="page-about anim-site-enter">
+      <SEO 
+        title="About Investment Friend | Financial Education in Ghana"
+        description="Meet the people behind Investment Friend. Discover our story, financial education approach and commitment to helping people in Ghana manage money better."
+      />
       <section className="hero-split">
         <div className="container">
           <div className="hero-split__top anim-fade-up">
             <h1 className="hero-split__headline">
-              Who We Are.<br />
-              <span style={{ color: 'var(--gold-primary)' }}>Your Investment Friend.</span>
+              About <span style={{ color: 'var(--gold-primary)' }}>Investment Friend</span>
             </h1>
             <div className="hero-split__desc-wrap">
               <p className="hero-split__desc">
@@ -47,6 +52,30 @@ export default function About() {
       <OurStory />
       <OurProcess />
       <OurApproach />
+      <ReelsCarousel
+        reels={[
+          {
+            id: 'reel-1',
+            title: 'Financial Education & Insights',
+            url: 'https://www.instagram.com/reel/DdCWXK3idNa/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=='
+          },
+          {
+            id: 'reel-2',
+            title: 'Smart Money & Wealth Building',
+            url: 'https://www.instagram.com/reel/Da8hrTbCbi-/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=='
+          },
+          {
+            id: 'reel-3',
+            title: 'Investment Tips & Community Highlights',
+            url: 'https://www.instagram.com/reel/DcBNxLJKEda/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=='
+          },
+          {
+            id: 'reel-4',
+            title: 'Financial Growth & Practical Wealth Guides',
+            url: 'https://www.instagram.com/reel/DaPwFpTCeB6/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=='
+          }
+        ]}
+      />
       <OurTeam />
       <CtaBanner />
 

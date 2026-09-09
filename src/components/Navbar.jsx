@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logoImg from '../assets/Logo/Logo Transparent Gradient Gold.png'
+import logoImg from '../assets/Logo Marks/Full Logo - Transparent.png'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const location = useLocation()
 
   const isLegalPage = ['/cookies', '/privacy', '/terms'].includes(location.pathname)
@@ -13,6 +14,11 @@ export default function Navbar() {
     window.addEventListener('scroll', h, { passive: true })
     return () => window.removeEventListener('scroll', h)
   }, [])
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [location])
+
 
   return (
     <nav className={`nav ${scrolled ? 'nav--solid' : ''} ${location.pathname === '/' ? 'nav--light-text' : ''} ${isLegalPage ? 'nav--legal' : ''}`}>
@@ -47,9 +53,33 @@ export default function Navbar() {
           </div>
           <Link to="/about" className={`nav__link ${location.pathname.startsWith('/about') ? 'nav__link--active' : ''}`}>About</Link>
           <Link to="/contact" className={`nav__link ${location.pathname.startsWith('/contact') ? 'nav__link--active' : ''}`}>Contact</Link>
-          <button className="nav__menu-btn" aria-label="Menu">
+          <button 
+            className={`nav__menu-btn ${isMobileMenuOpen ? 'is-open' : ''}`} 
+            aria-label="Menu"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             <span /><span /><span />
           </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`nav__mobile-menu ${isMobileMenuOpen ? 'is-open' : ''}`}>
+        <div className="nav__mobile-links">
+          <Link to="/" className={`nav__mobile-link ${location.pathname === '/' ? 'nav__mobile-link--active' : ''}`}>Home</Link>
+          <div className="nav__mobile-section">
+            <span className="nav__mobile-section-title">Services</span>
+            <Link to="/service/club" className="nav__mobile-sublink">Club</Link>
+            <Link to="/service/classes" className="nav__mobile-sublink">Classes</Link>
+            <Link to="/service/coaching" className="nav__mobile-sublink">Coaching</Link>
+          </div>
+          <div className="nav__mobile-section">
+            <span className="nav__mobile-section-title">Resources</span>
+            <Link to="/resources/tools" className="nav__mobile-sublink">Tools</Link>
+            <Link to="/resources/blog" className="nav__mobile-sublink">Blog</Link>
+          </div>
+          <Link to="/about" className={`nav__mobile-link ${location.pathname.startsWith('/about') ? 'nav__mobile-link--active' : ''}`}>About</Link>
+          <Link to="/contact" className={`nav__mobile-link ${location.pathname.startsWith('/contact') ? 'nav__mobile-link--active' : ''}`}>Contact</Link>
         </div>
       </div>
     </nav>

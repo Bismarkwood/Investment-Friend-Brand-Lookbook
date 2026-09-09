@@ -105,25 +105,6 @@
 }
 
 /* Select */
-.contact-form__select-wrap {
-  position: relative;
-}
-
-.contact-form__select-wrap select {
-  appearance: none;
-  -webkit-appearance: none;
-  padding-right: 44px;
-  cursor: pointer;
-}
-
-.contact-form__select-arrow {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  color: rgba(0, 0, 0, 0.5);
-}
 
 /* Submit */
 .contact-form__submit {

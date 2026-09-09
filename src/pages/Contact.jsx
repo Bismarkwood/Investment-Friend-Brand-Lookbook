@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../components/SEO';
 import '../components/HeroSplit.css';
 import ContactForm from '../components/ContactForm';
 import CtaBanner from '../components/CtaBanner';
@@ -8,18 +9,16 @@ import './Contact.css';
 export default function Contact() {
   return (
     <main className="page-contact anim-site-enter">
-      <title>Contact — Investment Friend</title>
-      <meta
-        name="description"
-        content="Get in touch with Investment Friend. Book a consultation, ask about classes, or connect with our team in Accra, Ghana."
+      <SEO 
+        title="Contact Investment Friend | Classes and Coaching in Ghana"
+        description="Contact Investment Friend about financial literacy classes, coaching, clubs or partnerships in Ghana. Find our contact details and send the team a message."
       />
 
       <section className="hero-split">
         <div className="container">
           <div className="hero-split__top anim-fade-up">
             <h1 className="hero-split__headline">
-              Let us hear<br />
-              <span style={{ color: 'var(--gold-primary)' }}>from you.</span>
+              Contact <span style={{ color: 'var(--gold-primary)' }}>Investment Friend</span>
             </h1>
             <div className="hero-split__desc-wrap">
               <p className="hero-split__desc">

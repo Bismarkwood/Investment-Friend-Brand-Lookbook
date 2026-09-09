@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import moneyMoversImg from '../assets/money-movers-bg.jpg';
 import stockClubImg from '../assets/Stock Club.jpg';
 import realEstateCircleImg from '../assets/real-estate-circle-bg.jpg';
+import budgetingImg from '../assets/Budgeting.webp';
+import introInvestingImg from '../assets/Introduction to Investing.jpg';
 
 const audienceData = [
   {
@@ -35,6 +37,44 @@ const audienceData = [
     desc: 'Maybe you have made financial decisions you regret. Maybe you are starting from scratch. You need to know it is not too late. You need a clear path forward. That is exactly what we provide.',
     bullets: [],
     image: 'https://images.unsplash.com/photo-1571260899304-425070112059?q=80&w=1471&auto=format&fit=crop'
+  }
+];
+
+const classCurriculumData = [
+  {
+    id: 'budgeting-money-management',
+    title: 'Budgeting and Money Management',
+    desc: 'How to track your income and expenses, build a budget that works for your lifestyle, and create a savings plan you will actually follow. We use templates and tools you can start using the same day.',
+    bullets: [],
+    image: budgetingImg
+  },
+  {
+    id: 'introduction-investing',
+    title: 'Introduction to Investing',
+    desc: 'What investing actually means, what options are available in Ghana (Treasury Bills, mutual funds, stocks, fixed deposits), how to evaluate risk, and how to start with whatever amount you have. No minimum wealth required.',
+    bullets: [],
+    image: introInvestingImg
+  },
+  {
+    id: 'building-passive-income',
+    title: 'Building Passive Income',
+    desc: 'How to create income streams that work while you sleep. We cover investment-based passive income, the power of compound interest, and realistic timelines for growth.',
+    bullets: [],
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1470&auto=format&fit=crop'
+  },
+  {
+    id: 'financial-planning-life-events',
+    title: 'Financial Planning for Life Events',
+    desc: 'Planning for marriage, children, homeownership, education, and retirement. How to make financial decisions during major life transitions without panic.',
+    bullets: [],
+    image: 'https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=1470&auto=format&fit=crop'
+  },
+  {
+    id: 'advanced-investment-strategy',
+    title: 'Advanced Investment Strategy',
+    desc: 'For those who have completed the basics. Portfolio diversification, market analysis, working with financial advisors, and accessing institutional investment opportunities.',
+    bullets: [],
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=1470&auto=format&fit=crop'
   }
 ];
 
@@ -98,7 +138,7 @@ export default function StrategicServices({
   description = "Investment Friend is designed for young professionals, career builders, and anyone ready to take control of their financial future in Ghana.",
   variant = "audience"
 }) {
-  const data = variant === "clubs" ? clubsData : audienceData;
+  const data = variant === "clubs" ? clubsData : variant === "classes" ? classCurriculumData : audienceData;
   const [activeTab, setActiveTab] = useState(data[0].id);
   const [indicatorStyle, setIndicatorStyle] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -68,7 +68,7 @@ export default function ValueProposition() {
     >
       <div className="value-prop__container container">
         
-        <div className="section-header anim-fade-up">
+        <div className="section-header anim-fade-up" data-reveal="up">
           <span className="section-header__eyebrow">The Value</span>
           <h2 className="section-header__title">Why Investment Friend</h2>
           <p className="section-header__description">
@@ -79,7 +79,10 @@ export default function ValueProposition() {
         {/* Middle Section: The Pillars */}
         <div className="vp-pillars-row">
           {pillars.map((pillar, index) => (
-            <div className={`vp-pillar-card anim-fade-up delay-${index + 3}`} key={pillar.id}>
+            <div className={`vp-pillar-card anim-fade-up delay-${index + 3}`} key={pillar.id}
+              data-reveal="up"
+              data-delay={index + 1}
+            >
               <div className="vp-pillar-icon">
                 {pillar.icon}
               </div>

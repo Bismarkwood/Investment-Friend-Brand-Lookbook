@@ -1,0 +1,135 @@
+.wiif-section {
+  background: #fff;
+  padding: 96px 0;
+}
+
+.wiif-intro {
+  margin-bottom: 40px;
+}
+
+.wiif-section-eyebrow {
+  color: var(--gold-primary, #d4a732);
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.wiif-heading {
+  font-family: var(--font-display, sans-serif);
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+}
+
+.wiif-subheading {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0;
+}
+
+/* -----------------------------------------------
+   BENTO GRID
+------------------------------------------------- */
+.wiif-bento {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.wiif-col-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wiif-card--flex {
+  flex: 1;
+}
+
+/* -----------------------------------------------
+   BASE CARD
+------------------------------------------------- */
+.wiif-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* -----------------------------------------------
+   IMAGE CARDS
+------------------------------------------------- */
+.wiif-card--image {
+  min-height: 220px;
+}
+
+.wiif-card--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wiif-card--tall {
+  height: 100%;
+  min-height: 500px;
+}
+
+/* -----------------------------------------------
+   TEXT CARDS — all grey
+------------------------------------------------- */
+.wiif-card--text {
+  background: #ebebeb;
+  color: #111;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 200px;
+}
+
+.wiif-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.wiif-card-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.01em;
+  color: #111;
+}
+
+.wiif-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+  color: #666;
+}
+
+/* -----------------------------------------------
+   RESPONSIVE
+------------------------------------------------- */
+@media (max-width: 900px) {
+  .wiif-card--image.wiif-card--tall {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .wiif-section {
+    padding: 72px 0;
+  }
+  .wiif-card--image {
+    min-height: 200px;
+  }
+}

@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Routes, Route, Outlet } from 'react-router-dom'
 import './App.css'
+import './animations.css'
+import useScrollReveal from './hooks/useScrollReveal'
 import logoImg from './assets/Logo/Logo Transparent Gradient Gold.png'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
@@ -8,15 +10,15 @@ import Brand from './pages/Brand'
 import About from './pages/About'
 import Club from './pages/Club'
 import Classes from './pages/Classes'
+import Coaching from './pages/Coaching'
 import Blog from './pages/Blog'
 import BlogDetails from './pages/BlogDetails'
 import Contact from './pages/Contact'
 import CookiePolicy from './pages/CookiePolicy'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
+import Tools from './pages/Tools'
 import Footer from './components/Footer'
-import AdminLayout from './admin/components/AdminLayout'
-import AdminClubManagement from './admin/pages/AdminClubManagement'
 /* ==============================
    LOGO INTRO
    ============================== */
@@ -79,6 +81,9 @@ export default function App() {
     setTimeout(() => setReady(true), 100)
   }, [])
 
+  // Global scroll-reveal: observe every [data-reveal] element on the page
+  useScrollReveal('[data-reveal]')
+
   return (
     <>
       {!introDone && <LogoIntro onComplete={handleIntroDone} />}
@@ -94,17 +99,16 @@ export default function App() {
             <Route path="club" element={<Club />} />
             <Route path="service/classes" element={<Classes />} />
             <Route path="classes" element={<Classes />} />
+            <Route path="service/coaching" element={<Coaching />} />
+            <Route path="coaching" element={<Coaching />} />
             <Route path="resources/blog" element={<Blog />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:id" element={<BlogDetails />} />
+            <Route path="resources/tools" element={<Tools />} />
+            <Route path="tools" element={<Tools />} />
             <Route path="cookies" element={<CookiePolicy />} />
             <Route path="privacy" element={<PrivacyPolicy />} />
             <Route path="terms" element={<TermsOfService />} />
-          </Route>
-
-          {/* Admin Portal Routes */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route path="club-management" element={<AdminClubManagement />} />
           </Route>
         </Routes>
       )}

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import SEO from '../components/SEO'
 import './Home.css'
 import HeroV2 from '../components/HeroV2'
 import Stories from '../components/Stories'
@@ -15,8 +16,22 @@ export default function Home() {
 
   return (
     <div className="home-page anim-site-enter">
+      <SEO 
+        title="Financial Education in Ghana | Investment Friend"
+        description="Learn to budget, save and understand investing in Ghana. Explore practical classes, personalised financial coaching, free tools and learning communities."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Investment Friend",
+          "url": "https://investmentfriend.com"
+        }}
+      />
       <main>
-        <HeroV2 />
+        <HeroV2 
+          headlineText="Financial Education and Coaching"
+          headlineAccent="in Ghana"
+          subtext="Your money. Your future. Now you know. Explore practical classes, personalised financial coaching, free tools and learning communities."
+        />
         <ValueProposition />
         <Stories />
         <StrategicServices />
