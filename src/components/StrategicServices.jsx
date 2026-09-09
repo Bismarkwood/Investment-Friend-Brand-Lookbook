@@ -164,8 +164,12 @@ export default function StrategicServices({
     setSubmitStatus(null);
 
     try {
+      if (!supabase) {
+        throw new Error('Supabase client is not initialized. Check your environment variables.');
+      }
+
       const { error } = await supabase
-        .from('applicants')
+        .from('clubs')
         .insert([
           { 
             name: formData.name, 
