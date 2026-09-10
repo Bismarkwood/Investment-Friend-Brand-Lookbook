@@ -43,3 +43,6 @@ out
 
 # OS generated files
 Thumbs.db
+
+.vercel
+.env*.local

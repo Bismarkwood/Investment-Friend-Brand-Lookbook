@@ -32,13 +32,30 @@
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  /* Slight zoom effect when the section becomes visible */
-  transform: scale(1.05);
+  /* Start slightly zoomed so the reveal has room to settle */
+  transform: scale(1.08);
   transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* On reveal, settle in then hand off to a continuous ken-burns loop */
 .cta-banner-section.is-visible .cta-banner__bg-image img {
   transform: scale(1);
+  animation: ctaKenBurns 22s ease-in-out 2s infinite alternate;
+}
+
+@keyframes ctaKenBurns {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.12) translate3d(-1.5%, -1.5%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-banner-section.is-visible .cta-banner__bg-image img {
+    animation: none;
+  }
 }
 
 .cta-banner__overlay {

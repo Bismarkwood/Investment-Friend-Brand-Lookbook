@@ -88,6 +88,53 @@ button { cursor: pointer; font-family: var(--font-body); }
   color: var(--gold-primary);
 }
 
+/* ========================================
+   UNIFIED CTA BUTTONS
+   Match the homepage hero button design (btn-v2)
+   across every primary / secondary CTA in the app.
+   ======================================== */
+
+/* Shared shape for every primary CTA */
+.btn--primary,
+.hero-btn--primary,
+.coaching-btn-primary,
+.apply-btn-primary,
+.class-card__apply {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  height: 52px !important;
+  padding: 0 24px !important;
+  border-radius: 100px !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+  text-align: center !important;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold-primary) 100%) !important;
+  color: var(--navy) !important;
+  border: none !important;
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+    box-shadow var(--duration-fast) var(--ease-out-expo) !important;
+}
+
+.btn--primary:hover:not(:disabled),
+.hero-btn--primary:hover:not(:disabled),
+.coaching-btn-primary:hover:not(:disabled),
+.apply-btn-primary:hover:not(:disabled),
+.class-card__apply:hover:not(:disabled) {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(212, 167, 50, 0.35) !important;
+}
+
+/* Unify the primary CTA icon puck to the hero style (navy circle, gold glyph) */
+.hero-btn__icon,
+.btn__icon-circle {
+  background-color: var(--navy) !important;
+  color: var(--gold-primary) !important;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--navy); }
